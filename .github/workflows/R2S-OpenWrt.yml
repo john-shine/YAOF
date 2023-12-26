@@ -51,7 +51,8 @@ jobs:
         df -h
     - name: Prepare Mixedwrt
       run: |
-        sudo chown -R github:github /home/runner/work/YAOF
+        mkdir -p /home/github/work/YAOF
+        sudo chown -R github:github /home/github/work/YAOF
         cp -r ./SCRIPTS/R2S/. ./SCRIPTS/
         cp -r ./SCRIPTS/. ./
         /bin/bash 01_get_ready.sh
