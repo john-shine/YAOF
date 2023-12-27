@@ -42,7 +42,7 @@ cp -f ../PATCH/BBRv2/693-Add_BBRv2_congestion_control_for_Linux_TCP.patch ./targ
 wget -qO - https://github.com/openwrt/openwrt/commit/cfaf039.patch | patch -p1
 # CacULE
 #wget -qO - https://github.com/QiuSimons/openwrt-NoTengoBattery/commit/7d44cab.patch | patch -p1
-#wget https://github.com/hamadmarri/cacule-cpu-scheduler/raw/master/patches/CacULE/v5.4/cacule-5.4.patch -O ./target/linux/generic/hack-5.4/694-cacule-5.4.patch
+#wget https://git.glan.space/github/cacule-cpu-scheduler.git/raw/master/patches/CacULE/v5.4/cacule-5.4.patch -O ./target/linux/generic/hack-5.4/694-cacule-5.4.patch
 # MuQSS
 #cp -f ../PATCH/MuQSS/0001-MultiQueue-Skiplist-Scheduler-v0.196.patch ./target/linux/generic/hack-5.4/694-0001-MultiQueue-Skiplist-Scheduler-v0.196.patch
 #cp -f ../PATCH/MuQSS/0002-MuQSS-Fix-build-error-on-config-leak.patch ./target/linux/generic/hack-5.4/694-0002-MuQSS-Fix-build-error-on-config-leak.patch
@@ -141,7 +141,7 @@ ln -sf ../../../feeds/packages/lang/node-yarn ./package/feeds/packages/node-yarn
 svn export https://github.com/nxhack/openwrt-node-packages/trunk/node-serialport-bindings-cpp feeds/packages/lang/node-serialport-bindings-cpp
 ln -sf ../../../feeds/packages/lang/node-serialport-bindings-cpp ./package/feeds/packages/node-serialport-bindings-cpp
 # R8168驱动
-git clone -b master --depth 1 https://github.com/BROBIRD/openwrt-r8168.git package/new/r8168
+git clone -b master --depth 1 https://git.glan.space/github/openwrt-r8168.git package/new/r8168
 patch -p1 <../PATCH/r8168/r8168-fix_LAN_led-for_r4s-from_TL.patch
 # R8152驱动
 svn export https://github.com/immortalwrt/immortalwrt/branches/master/package/kernel/r8152 package/new/r8152
@@ -242,7 +242,7 @@ svn export https://github.com/coolsnowwolf/lede/trunk/package/lean/ipv6-helper p
 git clone --depth 1 https://github.com/jerrykuku/node-request.git package/new/node-request
 git clone --depth 1 https://github.com/jerrykuku/luci-app-jd-dailybonus.git package/new/luci-app-jd-dailybonus
 # MentoHUST
-git clone --depth 1 https://github.com/BoringCat/luci-app-mentohust package/new/luci-app-mentohust
+git clone --depth 1 https://git.glan.space/github/luci-app-mentohust.git package/new/luci-app-mentohust
 git clone --depth 1 https://github.com/KyleRicardo/MentoHUST-OpenWrt-ipk package/new/MentoHUST
 # Mosdns
 #svn export https://github.com/immortalwrt/packages/trunk/net/mosdns feeds/packages/net/mosdns
@@ -255,7 +255,7 @@ svn export https://github.com/QiuSimons/openwrt-mos/trunk/v2ray-geodata package/
 # 流量监管
 svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-netdata package/lean/luci-app-netdata
 # 上网 APP 过滤
-git clone -b master --depth 1 https://github.com/destan19/OpenAppFilter.git package/new/OpenAppFilter
+git clone -b master --depth 1 https://git.glan.space/github/OpenAppFilter.git package/new/OpenAppFilter
 pushd package/new/OpenAppFilter
 wget -qO - https://github.com/QiuSimons/OpenAppFilter-destan19/commit/9088cc2.patch | patch -p1
 wget https://destan19.github.io/assets/oaf/open_feature/feature-06-18.cfg -O ./open-app-filter/files/feature.cfg
@@ -429,8 +429,8 @@ sed -i 's,ispip.clang.cn/all_cn.txt,raw.sevencdn.com/QiuSimons/Chnroute/master/d
 # 网络唤醒
 svn export https://github.com/zxlhhyccc/bf-package-master/trunk/zxlhhyccc/luci-app-services-wolplus package/new/luci-app-services-wolplus
 # 流量监视
-git clone -b master --depth 1 https://github.com/brvphoenix/wrtbwmon.git package/new/wrtbwmon
-git clone -b master --depth 1 https://github.com/brvphoenix/luci-app-wrtbwmon.git package/new/luci-app-wrtbwmon
+git clone -b master --depth 1 https://git.glan.space/github/wrtbwmon.git package/new/wrtbwmon
+git clone -b master --depth 1 https://git.glan.space/github/luci-app-wrtbwmon.git package/new/luci-app-wrtbwmon
 # 迅雷快鸟宽带加速
 git clone --depth 1 https://github.com/kiddin9/luci-app-xlnetacc.git package/lean/luci-app-xlnetacc
 # Zerotier
@@ -476,18 +476,12 @@ rm -rf .config
 #exit 0
 
 
-https://github.com/BoringCat/luci-app-mentohust
-https://github.com/BROBIRD/openwrt-r8168.git
-https://github.com/brvphoenix/luci-app-wrtbwmon.git
-https://github.com/brvphoenix/wrtbwmon.git
 https://github.com/coolsnowwolf/lede
 https://github.com/coolsnowwolf/luci
 https://github.com/coolsnowwolf/openwrt
 https://github.com/coolsnowwolf/packages
-https://github.com/destan19/OpenAppFilter.git
 https://github.com/Frogging-Family/linux-tkg
 https://github.com/fw876/helloworld
-https://github.com/hamadmarri/cacule-cpu-scheduler
 https://github.com/immortalwrt/immortalwrt
 https://github.com/immortalwrt/luci-app-unblockneteasemusic.git
 https://github.com/immortalwrt/luci
