@@ -164,13 +164,13 @@ svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-adby
 svn export https://github.com/coolsnowwolf/lede/trunk/package/lean/adbyby package/lean/adbyby
 # 广告过滤 AdGuard
 #svn export https://github.com/Lienol/openwrt/trunk/package/diy/luci-app-adguardhome package/new/luci-app-adguardhome
-git clone https://github.com/rufengsuixing/luci-app-adguardhome.git package/new/luci-app-adguardhome
+git clone https://git.glan.space/github/luci-app-adguardhome.git package/new/luci-app-adguardhome
 rm -rf ./feeds/packages/net/adguardhome
 svn export https://github.com/openwrt/packages/trunk/net/adguardhome feeds/packages/net/adguardhome
 sed -i '/\t)/a\\t$(STAGING_DIR_HOST)/bin/upx --lzma --best $(GO_PKG_BUILD_BIN_DIR)/AdGuardHome' ./feeds/packages/net/adguardhome/Makefile
 sed -i '/init/d' feeds/packages/net/adguardhome/Makefile
 # Argon 主题
-git clone https://github.com/jerrykuku/luci-theme-argon.git package/new/luci-theme-argon
+git clone https://git.glan.space/github/luci-theme-argon.git package/new/luci-theme-argon
 wget -P package/new/luci-theme-argon/htdocs/luci-static/argon/background/ https://github.com/QiuSimons/OpenWrt-Add/raw/master/5808303.jpg
 rm -rf ./package/new/luci-theme-argon/htdocs/luci-static/argon/background/README.md
 #pushd package/new/luci-theme-argon
@@ -183,7 +183,7 @@ ln -sf ../../../feeds/luci/applications/luci-app-arpbind ./package/feeds/luci/lu
 # 定时重启
 svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-autoreboot package/lean/luci-app-autoreboot
 # Boost 通用即插即用
-svn export https://github.com/QiuSimons/slim-wrt/branches/main/slimapps/application/luci-app-boostupnp package/new/luci-app-boostupnp
+svn export https://git.glan.space/github/luci-app-boostupnp.git package/new/luci-app-boostupnp
 rm -rf ./feeds/packages/net/miniupnpd
 svn export https://github.com/coolsnowwolf/packages/trunk/net/miniupnpd feeds/packages/net/miniupnpd
 # ChinaDNS
@@ -258,7 +258,7 @@ wget -qO - https://github.com/QiuSimons/OpenAppFilter-destan19/commit/9088cc2.pa
 wget https://destan19.github.io/assets/oaf/open_feature/feature-06-18.cfg -O ./open-app-filter/files/feature.cfg
 popd
 # OLED 驱动程序
-git clone -b master --depth 1 https://github.com/NateLol/luci-app-oled.git package/new/luci-app-oled
+git clone -b master --depth 1 https://git.glan.space/github/luci-app-oled.git package/new/luci-app-oled
 wget -qO - https://github.com/openwrt/openwrt/commit/efc8aff.patch | patch -p1
 # 花生壳内网穿透
 svn export https://git.glan.space/github/dragino2.git/trunk/devices/common/diy/package/teasiu/luci-app-phtunnel package/new/luci-app-phtunnel
@@ -482,7 +482,6 @@ https://github.com/immortalwrt/luci
 https://github.com/immortalwrt/packages
 https://github.com/jerrykuku/lua-maxminddb.git
 https://github.com/jerrykuku/luci-app-vssr.git
-https://github.com/jerrykuku/luci-theme-argon.git
 https://github.com/kenzok8/openwrt-packages
 https://github.com/kiddin9/openwrt-packages
 https://github.com/KyleRicardo/MentoHUST-OpenWrt-ipk
@@ -491,7 +490,6 @@ https://github.com/Lienol/openwrt-packages
 https://github.com/Lienol/openwrt
 https://github.com/lisaac/luci-lib-docker
 https://github.com/msylgj/R2S-R4S-OpenWrt
-https://github.com/NateLol/luci-app-oled.git
 https://github.com/nxhack/openwrt-node-packages
 https://github.com/openssl/openssl
 https://github.com/openwrt/openwrt
@@ -505,6 +503,4 @@ https://github.com/QiuSimons/openwrt-chinadns-ng.git
 https://github.com/QiuSimons/openwrt-mos
 https://github.com/QiuSimons/openwrt-NoTengoBattery
 https://github.com/QiuSimons/OpenWrt_luci-app
-https://github.com/QiuSimons/slim-wrt/branches/main/slimapps/application/luci-app-boostupnp
-https://github.com/rufengsuixing/luci-app-adguardhome.git
 https://github.com/zxlhhyccc/bf-package-master
