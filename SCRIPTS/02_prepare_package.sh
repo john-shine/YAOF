@@ -15,8 +15,8 @@ sed -i 's,-SNAPSHOT,,g' package/base-files/image-config.in
 # 维多利亚的秘密
 rm -rf ./scripts/download.pl
 rm -rf ./include/download.mk
-wget -P scripts/ https://github.com/immortalwrt/immortalwrt/raw/openwrt-21.02/scripts/download.pl
-wget -P include/ https://github.com/immortalwrt/immortalwrt/raw/openwrt-21.02/include/download.mk
+wget -P scripts/ https://git.glan.space/github/immortalwrt.git/raw/openwrt-21.02/scripts/download.pl
+wget -P include/ https://git.glan.space/github/immortalwrt.git/raw/openwrt-21.02/include/download.mk
 sed -i '/unshift/d' scripts/download.pl
 sed -i '/mirror02/d' scripts/download.pl
 echo "net.netfilter.nf_conntrack_helper = 1" >>./package/kernel/linux/files/sysctl-nf-conntrack.conf
@@ -29,7 +29,7 @@ cp -f ../PATCH/backport/695-tcp-optimizations.patch ./target/linux/generic/backp
 # introduce "le9" Linux kernel patches
 cp -f ../PATCH/backport/695-le9i.patch ./target/linux/generic/hack-5.4/695-le9i.patch
 # Patch arm64 型号名称
-wget -P target/linux/generic/hack-5.4/ https://github.com/immortalwrt/immortalwrt/raw/openwrt-21.02/target/linux/generic/hack-5.4/312-arm64-cpuinfo-Add-model-name-in-proc-cpuinfo-for-64bit-ta.patch
+wget -P target/linux/generic/hack-5.4/ https://git.glan.space/github/immortalwrt.git/raw/openwrt-21.02/target/linux/generic/hack-5.4/312-arm64-cpuinfo-Add-model-name-in-proc-cpuinfo-for-64bit-ta.patch
 # Patch jsonc
 patch -p1 <../PATCH/jsonc/use_json_object_new_int64.patch
 # Patch dnsmasq
@@ -41,7 +41,7 @@ patch -p1 <../PATCH/BBRv2/openwrt-kmod-bbr2.patch
 cp -f ../PATCH/BBRv2/693-Add_BBRv2_congestion_control_for_Linux_TCP.patch ./target/linux/generic/hack-5.4/693-Add_BBRv2_congestion_control_for_Linux_TCP.patch
 wget -qO - https://github.com/openwrt/openwrt/commit/cfaf039.patch | patch -p1
 # CacULE
-#wget -qO - https://github.com/QiuSimons/openwrt-NoTengoBattery/commit/7d44cab.patch | patch -p1
+#wget -qO - https://git.glan.space/github/openwrt-NoTengoBattery.git/commit/7d44cab.patch | patch -p1
 #wget https://git.glan.space/github/cacule-cpu-scheduler.git/raw/master/patches/CacULE/v5.4/cacule-5.4.patch -O ./target/linux/generic/hack-5.4/694-cacule-5.4.patch
 # MuQSS
 #cp -f ../PATCH/MuQSS/0001-MultiQueue-Skiplist-Scheduler-v0.196.patch ./target/linux/generic/hack-5.4/694-0001-MultiQueue-Skiplist-Scheduler-v0.196.patch
@@ -61,7 +61,7 @@ CONFIG_LRNG=y
 CONFIG_LRNG_JENT=y
 ' >>./target/linux/generic/config-5.4
 # Grub 2
-wget -qO - https://github.com/QiuSimons/openwrt-NoTengoBattery/commit/afed16a.patch | patch -p1
+wget -qO - https://git.glan.space/github/openwrt-NoTengoBattery.git/commit/afed16a.patch | patch -p1
 # Haproxy
 rm -rf ./feeds/packages/net/haproxy
 svn export https://github.com/openwrt/packages/trunk/net/haproxy feeds/packages/net/haproxy
@@ -80,7 +80,7 @@ wget https://github.com/coolsnowwolf/lede/raw/master/target/linux/generic/hack-5
 popd
 # Patch FireWall 以增添 FullCone 功能
 mkdir package/network/config/firewall/patches
-wget -P package/network/config/firewall/patches/ https://github.com/immortalwrt/immortalwrt/raw/master/package/network/config/firewall/patches/fullconenat.patch
+wget -P package/network/config/firewall/patches/ https://git.glan.space/github/immortalwrt.git/raw/master/package/network/config/firewall/patches/fullconenat.patch
 wget -qO- https://git.glan.space/github/R2S-R4S-OpenWrt.git/raw/21.02/PATCHES/001-fix-firewall-flock.patch | patch -p1
 # Patch LuCI 以增添 FullCone 开关
 patch -p1 <../PATCH/firewall/luci-app-firewall_add_fullcone.patch
@@ -93,14 +93,14 @@ popd
 ### 获取额外的基础软件包 ###
 # 更换为 ImmortalWrt Uboot 以及 Target
 rm -rf ./target/linux/rockchip
-svn export https://github.com/immortalwrt/immortalwrt/branches/openwrt-21.02/target/linux/rockchip target/linux/rockchip
+svn export https://git.glan.space/github/immortalwrt.git/branches/openwrt-21.02/target/linux/rockchip target/linux/rockchip
 rm -rf ./package/boot/uboot-rockchip
-svn export https://github.com/immortalwrt/immortalwrt/branches/openwrt-21.02/package/boot/uboot-rockchip package/boot/uboot-rockchip
-svn export https://github.com/immortalwrt/immortalwrt/branches/openwrt-21.02/package/boot/arm-trusted-firmware-rockchip-vendor package/boot/arm-trusted-firmware-rockchip-vendor
+svn export https://git.glan.space/github/immortalwrt.git/branches/openwrt-21.02/package/boot/uboot-rockchip package/boot/uboot-rockchip
+svn export https://git.glan.space/github/immortalwrt.git/branches/openwrt-21.02/package/boot/arm-trusted-firmware-rockchip-vendor package/boot/arm-trusted-firmware-rockchip-vendor
 rm -rf ./package/kernel/linux/modules/video.mk
-wget -P package/kernel/linux/modules/ https://github.com/immortalwrt/immortalwrt/raw/openwrt-21.02/package/kernel/linux/modules/video.mk
+wget -P package/kernel/linux/modules/ https://git.glan.space/github/immortalwrt.git/raw/openwrt-21.02/package/kernel/linux/modules/video.mk
 # ImmortalWrt Uboot TMP Fix
-wget -qO- https://github.com/immortalwrt/immortalwrt/commit/433c93e.patch | patch -REp1
+wget -qO- https://git.glan.space/github/immortalwrt.git/commit/433c93e.patch | patch -REp1
 # R4S超频到 2.2/1.8 GHz
 #rm -rf ./target/linux/rockchip/patches-5.4/992-rockchip-rk3399-overclock-to-2.2-1.8-GHz-for-NanoPi4.patch
 #cp -f ../PATCH/target_r4s/991-rockchip-rk3399-overclock-to-2.2-1.8-GHz-for-NanoPi4.patch ./target/linux/rockchip/patches-5.4/991-rockchip-rk3399-overclock-to-2.2-1.8-GHz-for-NanoPi4.patch
@@ -113,7 +113,7 @@ sed -i 's,noinitrd,noinitrd mitigations=off,g' target/linux/x86/image/grub-efi.c
 sed -i 's,noinitrd,noinitrd mitigations=off,g' target/linux/x86/image/grub-iso.cfg
 sed -i 's,noinitrd,noinitrd mitigations=off,g' target/linux/x86/image/grub-pc.cfg
 # AutoCore
-svn export https://github.com/immortalwrt/immortalwrt/branches/openwrt-21.02/package/emortal/autocore package/lean/autocore
+svn export https://git.glan.space/github/immortalwrt.git/branches/openwrt-21.02/package/emortal/autocore package/lean/autocore
 sed -i 's/"getTempInfo" /"getTempInfo", "getCPUBench", "getCPUUsage" /g' package/lean/autocore/files/generic/luci-mod-status-autocore.json
 rm -rf ./feeds/packages/utils/coremark
 svn export https://github.com/immortalwrt/packages/trunk/utils/coremark feeds/packages/utils/coremark
@@ -144,7 +144,7 @@ ln -sf ../../../feeds/packages/lang/node-serialport-bindings-cpp ./package/feeds
 git clone -b master --depth 1 https://git.glan.space/github/openwrt-r8168.git package/new/r8168
 patch -p1 <../PATCH/r8168/r8168-fix_LAN_led-for_r4s-from_TL.patch
 # R8152驱动
-svn export https://github.com/immortalwrt/immortalwrt/branches/master/package/kernel/r8152 package/new/r8152
+svn export https://git.glan.space/github/immortalwrt.git/branches/master/package/kernel/r8152 package/new/r8152
 sed -i 's,kmod-usb-net-rtl8152,kmod-usb-net-rtl8152-vendor,g' target/linux/rockchip/image/armv8.mk
 # UPX 可执行软件压缩
 sed -i '/patchelf pkgconf/i\tools-y += ucl upx' ./tools/Makefile
@@ -452,7 +452,7 @@ rm -rf .config
 ### Shortcut-FE 部分 ###
 # Patch Kernel 以支持 Shortcut-FE
 #pushd target/linux/generic/hack-5.4
-#wget https://github.com/immortalwrt/immortalwrt/raw/master/target/linux/generic/hack-5.4/953-net-patch-linux-kernel-to-support-shortcut-fe.patch
+#wget https://git.glan.space/github/immortalwrt.git/raw/master/target/linux/generic/hack-5.4/953-net-patch-linux-kernel-to-support-shortcut-fe.patch
 #popd
 # Patch LuCI 以增添 Shortcut-FE 开关
 #patch -p1 < ../PATCH/firewall/luci-app-firewall_add_sfe_switch.patch
@@ -472,7 +472,6 @@ https://github.com/coolsnowwolf/lede
 https://github.com/coolsnowwolf/luci
 https://github.com/coolsnowwolf/openwrt
 https://github.com/coolsnowwolf/packages
-https://github.com/immortalwrt/immortalwrt
 https://github.com/immortalwrt/luci
 https://github.com/immortalwrt/packages
 https://github.com/jerrykuku/luci-app-vssr.git
@@ -489,6 +488,5 @@ https://github.com/QiuSimons/Chnroute
 https://github.com/QiuSimons/OpenWrt-Add
 https://github.com/QiuSimons/openwrt-chinadns-ng.git
 https://github.com/QiuSimons/openwrt-mos
-https://github.com/QiuSimons/openwrt-NoTengoBattery
 https://github.com/QiuSimons/OpenWrt_luci-app
 https://github.com/zxlhhyccc/bf-package-master
