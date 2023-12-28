@@ -238,9 +238,6 @@ svn export https://github.com/coolsnowwolf/packages/trunk/net/frp package/lean/f
 svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-ipsec-server package/lean/luci-app-ipsec-server
 # IPv6 兼容助手
 svn export https://github.com/coolsnowwolf/lede/trunk/package/lean/ipv6-helper package/lean/ipv6-helper
-# MentoHUST
-git clone --depth 1 https://git.glan.space/github/luci-app-mentohust.git package/new/luci-app-mentohust
-git clone --depth 1 https://github.com/KyleRicardo/MentoHUST-OpenWrt-ipk package/new/MentoHUST
 # Mosdns
 #svn export https://github.com/immortalwrt/packages/trunk/net/mosdns feeds/packages/net/mosdns
 #ln -sf ../../../feeds/packages/net/mosdns ./package/feeds/packages/mosdns
@@ -482,7 +479,6 @@ https://github.com/immortalwrt/packages
 https://github.com/jerrykuku/luci-app-vssr.git
 https://github.com/kenzok8/openwrt-packages
 https://github.com/kiddin9/openwrt-packages
-https://github.com/KyleRicardo/MentoHUST-OpenWrt-ipk
 https://github.com/Lienol/openwrt-package
 https://github.com/Lienol/openwrt-packages
 https://github.com/Lienol/openwrt
