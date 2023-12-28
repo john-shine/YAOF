@@ -121,24 +121,24 @@ svn export https://github.com/immortalwrt/packages/trunk/utils/coremark feeds/pa
 svn export https://github.com/QiuSimons/OpenWrt-Add/trunk/dpdk package/new/dpdk
 # 更换 Nodejs 版本
 rm -rf ./feeds/packages/lang/node
-svn export https://github.com/nxhack/openwrt-node-packages/trunk/node feeds/packages/lang/node
+svn export https://git.glan.space/github/openwrt-node-packages.git/trunk/node feeds/packages/lang/node
 sed -i '\/bin\/node/a\\t$(STAGING_DIR_HOST)/bin/upx --lzma --best $(1)/usr/bin/node' feeds/packages/lang/node/Makefile
 rm -rf ./feeds/packages/lang/node-arduino-firmata
-svn export https://github.com/nxhack/openwrt-node-packages/trunk/node-arduino-firmata feeds/packages/lang/node-arduino-firmata
+svn export https://git.glan.space/github/openwrt-node-packages.git/trunk/node-arduino-firmata feeds/packages/lang/node-arduino-firmata
 rm -rf ./feeds/packages/lang/node-cylon
-svn export https://github.com/nxhack/openwrt-node-packages/trunk/node-cylon feeds/packages/lang/node-cylon
+svn export https://git.glan.space/github/openwrt-node-packages.git/trunk/node-cylon feeds/packages/lang/node-cylon
 rm -rf ./feeds/packages/lang/node-hid
-svn export https://github.com/nxhack/openwrt-node-packages/trunk/node-hid feeds/packages/lang/node-hid
+svn export https://git.glan.space/github/openwrt-node-packages.git/trunk/node-hid feeds/packages/lang/node-hid
 rm -rf ./feeds/packages/lang/node-homebridge
-svn export https://github.com/nxhack/openwrt-node-packages/trunk/node-homebridge feeds/packages/lang/node-homebridge
+svn export https://git.glan.space/github/openwrt-node-packages.git/trunk/node-homebridge feeds/packages/lang/node-homebridge
 rm -rf ./feeds/packages/lang/node-serialport
-svn export https://github.com/nxhack/openwrt-node-packages/trunk/node-serialport feeds/packages/lang/node-serialport
+svn export https://git.glan.space/github/openwrt-node-packages.git/trunk/node-serialport feeds/packages/lang/node-serialport
 rm -rf ./feeds/packages/lang/node-serialport-bindings
-svn export https://github.com/nxhack/openwrt-node-packages/trunk/node-serialport-bindings feeds/packages/lang/node-serialport-bindings
+svn export https://git.glan.space/github/openwrt-node-packages.git/trunk/node-serialport-bindings feeds/packages/lang/node-serialport-bindings
 rm -rf ./feeds/packages/lang/node-yarn
-svn export https://github.com/nxhack/openwrt-node-packages/trunk/node-yarn feeds/packages/lang/node-yarn
+svn export https://git.glan.space/github/openwrt-node-packages.git/trunk/node-yarn feeds/packages/lang/node-yarn
 ln -sf ../../../feeds/packages/lang/node-yarn ./package/feeds/packages/node-yarn
-svn export https://github.com/nxhack/openwrt-node-packages/trunk/node-serialport-bindings-cpp feeds/packages/lang/node-serialport-bindings-cpp
+svn export https://git.glan.space/github/openwrt-node-packages.git/trunk/node-serialport-bindings-cpp feeds/packages/lang/node-serialport-bindings-cpp
 ln -sf ../../../feeds/packages/lang/node-serialport-bindings-cpp ./package/feeds/packages/node-serialport-bindings-cpp
 # R8168驱动
 git clone -b master --depth 1 https://git.glan.space/github/openwrt-r8168.git package/new/r8168
@@ -260,7 +260,7 @@ wget -qO - https://github.com/openwrt/openwrt/commit/efc8aff.patch | patch -p1
 # 花生壳内网穿透
 svn export https://git.glan.space/github/dragino2.git/trunk/devices/common/diy/package/teasiu/luci-app-phtunnel package/new/luci-app-phtunnel
 svn export https://git.glan.space/github/dragino2.git/trunk/devices/common/diy/package/teasiu/phtunnel package/new/phtunnel
-svn export https://github.com/QiuSimons/dragino2-teasiu/trunk/package/teasiu/luci-app-oray package/new/luci-app-oray
+svn export https://git.glan.space/github/dragino2-teasiu.git/trunk/package/teasiu/luci-app-oray package/new/luci-app-oray
 # Passwall
 #svn export https://github.com/immortalwrt/luci/trunk/applications/luci-app-passwall package/new/luci-app-passwall
 svn export https://git.glan.space/github/openwrt-passwall.git/branches/luci/luci-app-passwall package/new/luci-app-passwall
@@ -333,12 +333,12 @@ svn export https://git.glan.space/github/openwrt-passwall.git/trunk/ipt2socks pa
 svn export https://git.glan.space/github/openwrt-passwall.git/trunk/trojan package/lean/trojan
 svn export https://git.glan.space/github/openwrt-passwall.git/trunk/tcping package/lean/tcping
 svn export https://git.glan.space/github/openwrt-passwall.git/trunk/trojan-go package/lean/trojan-go
-svn export https://github.com/fw876/helloworld/trunk/simple-obfs package/lean/simple-obfs
-svn export https://github.com/fw876/helloworld/trunk/naiveproxy package/lean/naiveproxy
-svn export https://github.com/fw876/helloworld/trunk/v2ray-core package/lean/v2ray-core
-svn export https://github.com/fw876/helloworld/trunk/xray-core package/lean/xray-core
-svn export https://github.com/fw876/helloworld/trunk/v2ray-plugin package/lean/v2ray-plugin
-svn export https://github.com/fw876/helloworld/trunk/xray-plugin package/lean/xray-plugin
+svn export https://git.glan.space/github/helloworld.git/trunk/simple-obfs package/lean/simple-obfs
+svn export https://git.glan.space/github/helloworld.git/trunk/naiveproxy package/lean/naiveproxy
+svn export https://git.glan.space/github/helloworld.git/trunk/v2ray-core package/lean/v2ray-core
+svn export https://git.glan.space/github/helloworld.git/trunk/xray-core package/lean/xray-core
+svn export https://git.glan.space/github/helloworld.git/trunk/v2ray-plugin package/lean/v2ray-plugin
+svn export https://git.glan.space/github/helloworld.git/trunk/xray-plugin package/lean/xray-plugin
 svn export https://git.glan.space/github/openwrt-passwall.git/trunk/shadowsocks-rust feeds/packages/net/shadowsocks-rust
 #svn export https://github.com/immortalwrt/packages/trunk/net/shadowsocks-rust feeds/packages/net/shadowsocks-rust
 sed -i '/Build\/Compile/a\\t$(STAGING_DIR_HOST)/bin/upx --lzma --best $$(PKG_BUILD_DIR)/$(component)' feeds/packages/net/shadowsocks-rust/Makefile
@@ -346,12 +346,12 @@ ln -sf ../../../feeds/packages/net/shadowsocks-rust ./package/feeds/packages/sha
 svn export https://github.com/immortalwrt/packages/trunk/net/kcptun feeds/packages/net/kcptun
 ln -sf ../../../feeds/packages/net/kcptun ./package/feeds/packages/kcptun
 # ShadowsocksR Plus+
-svn export https://github.com/fw876/helloworld/trunk/luci-app-ssr-plus package/lean/luci-app-ssr-plus
+svn export https://git.glan.space/github/helloworld.git/trunk/luci-app-ssr-plus package/lean/luci-app-ssr-plus
 rm -rf ./package/lean/luci-app-ssr-plus/po/zh_Hans
 pushd package/lean
-#wget -qO - https://github.com/fw876/helloworld/pull/656.patch | patch -p1
-wget -qO - https://github.com/fw876/helloworld/commit/5bbf6e7.patch | patch -p1
-wget -qO - https://github.com/fw876/helloworld/commit/ea3b4bd.patch | patch -p1
+#wget -qO - https://git.glan.space/github/helloworld.git/pull/656.patch | patch -p1
+wget -qO - https://git.glan.space/github/helloworld.git/commit/5bbf6e7.patch | patch -p1
+wget -qO - https://git.glan.space/github/helloworld.git/commit/ea3b4bd.patch | patch -p1
 popd
 pushd package/lean/luci-app-ssr-plus
 sed -i 's,default n,default y,g' Makefile
@@ -472,7 +472,6 @@ https://github.com/coolsnowwolf/lede
 https://github.com/coolsnowwolf/luci
 https://github.com/coolsnowwolf/openwrt
 https://github.com/coolsnowwolf/packages
-https://github.com/fw876/helloworld
 https://github.com/immortalwrt/immortalwrt
 https://github.com/immortalwrt/luci
 https://github.com/immortalwrt/packages
@@ -482,13 +481,11 @@ https://github.com/kiddin9/openwrt-packages
 https://github.com/Lienol/openwrt-package
 https://github.com/Lienol/openwrt-packages
 https://github.com/Lienol/openwrt
-https://github.com/nxhack/openwrt-node-packages
 https://github.com/openssl/openssl
 https://github.com/openwrt/openwrt
 https://github.com/openwrt/packages
 https://github.com/QiuSimons/packages
 https://github.com/QiuSimons/Chnroute
-https://github.com/QiuSimons/dragino2-teasiu
 https://github.com/QiuSimons/OpenWrt-Add
 https://github.com/QiuSimons/openwrt-chinadns-ng.git
 https://github.com/QiuSimons/openwrt-mos
