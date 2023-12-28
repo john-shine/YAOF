@@ -51,7 +51,7 @@ wget -qO - https://github.com/openwrt/openwrt/commit/cfaf039.patch | patch -p1
 #cp -f ../PATCH/BMQ/01-bmq_v5.4-r2.patch ./target/linux/generic/hack-5.4/694-01-bmq_v5.4-r2.patch
 # PDS
 #cp -f ../PATCH/PDS/v5.4_undead-pds099o.patch ./target/linux/generic/hack-5.4/694-v5.4_undead-pds099o.patch
-#wget https://github.com/Frogging-Family/linux-tkg/raw/master/linux-tkg-patches/5.4/0005-glitched-pds.patch -O ./target/linux/generic/hack-5.4/694-0005-02-glitched-pds.patch
+#wget https://git.glan.space/github/linux-tkg.git/raw/master/linux-tkg-patches/5.4/0005-glitched-pds.patch -O ./target/linux/generic/hack-5.4/694-0005-02-glitched-pds.patch
 # UKSM
 #cp -f ../PATCH/UKSM/695-uksm-5.4.patch ./target/linux/generic/hack-5.4/695-uksm-5.4.patch
 # LRNG
@@ -209,7 +209,7 @@ ln -sf ../../../feeds/luci/applications/luci-app-aliddns ./package/feeds/luci/lu
 rm -rf ./feeds/luci/applications/luci-app-dockerman
 svn export https://git.glan.space/github/luci-app-dockerman.git/trunk/applications/luci-app-dockerman feeds/luci/applications/luci-app-dockerman
 rm -rf ./feeds/luci/collections/luci-lib-docker
-svn export https://github.com/lisaac/luci-lib-docker/trunk/collections/luci-lib-docker feeds/luci/collections/luci-lib-docker
+svn export https://git.glan.space/github/luci-lib-docker.git/trunk/collections/luci-lib-docker feeds/luci/collections/luci-lib-docker
 #sed -i 's/+docker/+docker \\\n\t+dockerd/g' ./feeds/luci/applications/luci-app-dockerman/Makefile
 sed -i '/sysctl.d/d' feeds/packages/utils/dockerd/Makefile
 # DiskMan
@@ -409,7 +409,7 @@ svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-vlmc
 svn export https://github.com/coolsnowwolf/packages/trunk/net/vlmcsd package/lean/vlmcsd
 # VSSR
 git clone -b master --depth 1 https://github.com/jerrykuku/luci-app-vssr.git package/lean/luci-app-vssr
-git clone -b master --depth 1 https://github.com/jerrykuku/lua-maxminddb.git package/lean/lua-maxminddb
+git clone -b master --depth 1 https://git.glan.space/github/lua-maxminddb.git package/lean/lua-maxminddb
 pushd package/lean/luci-app-vssr
 sed -i 's,default n,default y,g' Makefile
 sed -i '/trojan-go/d' Makefile
@@ -475,12 +475,10 @@ https://github.com/coolsnowwolf/lede
 https://github.com/coolsnowwolf/luci
 https://github.com/coolsnowwolf/openwrt
 https://github.com/coolsnowwolf/packages
-https://github.com/Frogging-Family/linux-tkg
 https://github.com/fw876/helloworld
 https://github.com/immortalwrt/immortalwrt
 https://github.com/immortalwrt/luci
 https://github.com/immortalwrt/packages
-https://github.com/jerrykuku/lua-maxminddb.git
 https://github.com/jerrykuku/luci-app-vssr.git
 https://github.com/kenzok8/openwrt-packages
 https://github.com/kiddin9/openwrt-packages
@@ -488,7 +486,6 @@ https://github.com/KyleRicardo/MentoHUST-OpenWrt-ipk
 https://github.com/Lienol/openwrt-package
 https://github.com/Lienol/openwrt-packages
 https://github.com/Lienol/openwrt
-https://github.com/lisaac/luci-lib-docker
 https://github.com/msylgj/R2S-R4S-OpenWrt
 https://github.com/nxhack/openwrt-node-packages
 https://github.com/openssl/openssl
