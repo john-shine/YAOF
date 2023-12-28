@@ -318,7 +318,7 @@ svn export https://github.com/coolsnowwolf/packages/trunk/libs/rblibtorrent pack
 # 清理内存
 svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-ramfree package/lean/luci-app-ramfree
 # ServerChan 微信推送
-git clone -b master --depth 1 https://github.com/tty228/luci-app-serverchan.git package/new/luci-app-serverchan
+git clone -b master --depth 1 https://git.glan.space/github/luci-app-serverchan.git package/new/luci-app-serverchan
 # SmartDNS
 rm -rf ./feeds/packages/net/smartdns
 svn export https://github.com/Lienol/openwrt-packages/trunk/net/smartdns feeds/packages/net/smartdns
@@ -516,5 +516,4 @@ https://github.com/QiuSimons/OpenWrt_luci-app
 https://github.com/QiuSimons/slim-wrt/branches/main/slimapps/application/luci-app-boostupnp
 https://github.com/rufengsuixing/luci-app-adguardhome.git
 https://github.com/teasiu/dragino2
-https://github.com/tty228/luci-app-serverchan.git
 https://github.com/zxlhhyccc/bf-package-master
