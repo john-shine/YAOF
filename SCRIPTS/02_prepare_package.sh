@@ -254,7 +254,7 @@ svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-netd
 # 上网 APP 过滤
 git clone -b master --depth 1 https://git.glan.space/github/OpenAppFilter.git package/new/OpenAppFilter
 pushd package/new/OpenAppFilter
-wget -qO - https://github.com/QiuSimons/OpenAppFilter-destan19/commit/9088cc2.patch | patch -p1
+wget -qO - https://git.glan.space/github/OpenAppFilter-destan19.git/commit/9088cc2.patch | patch -p1
 wget https://destan19.github.io/assets/oaf/open_feature/feature-06-18.cfg -O ./open-app-filter/files/feature.cfg
 popd
 # OLED 驱动程序
@@ -494,7 +494,6 @@ https://github.com/openwrt/packages
 https://github.com/QiuSimons/packages
 https://github.com/QiuSimons/Chnroute
 https://github.com/QiuSimons/dragino2-teasiu
-https://github.com/QiuSimons/OpenAppFilter-destan19
 https://github.com/QiuSimons/OpenWrt-Add
 https://github.com/QiuSimons/openwrt-chinadns-ng.git
 https://github.com/QiuSimons/openwrt-mos
