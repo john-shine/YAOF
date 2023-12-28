@@ -262,9 +262,7 @@ wget https://destan19.github.io/assets/oaf/open_feature/feature-06-18.cfg -O ./o
 popd
 # OLED 驱动程序
 git clone -b master --depth 1 https://github.com/NateLol/luci-app-oled.git package/new/luci-app-oled
-# OpenClash
 wget -qO - https://github.com/openwrt/openwrt/commit/efc8aff.patch | patch -p1
-git clone --single-branch --depth 1 -b dev https://github.com/vernesong/OpenClash.git package/new/luci-app-openclash
 # 花生壳内网穿透
 svn export https://github.com/teasiu/dragino2/trunk/devices/common/diy/package/teasiu/luci-app-phtunnel package/new/luci-app-phtunnel
 svn export https://github.com/teasiu/dragino2/trunk/devices/common/diy/package/teasiu/phtunnel package/new/phtunnel
@@ -519,5 +517,4 @@ https://github.com/QiuSimons/slim-wrt/branches/main/slimapps/application/luci-ap
 https://github.com/rufengsuixing/luci-app-adguardhome.git
 https://github.com/teasiu/dragino2
 https://github.com/tty228/luci-app-serverchan.git
-https://github.com/vernesong/OpenClash.git
 https://github.com/zxlhhyccc/bf-package-master
