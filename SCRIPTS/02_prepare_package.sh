@@ -176,7 +176,7 @@ rm -rf ./package/new/luci-theme-argon/htdocs/luci-static/argon/background/README
 #pushd package/new/luci-theme-argon
 #git checkout 3b15d06
 #popd
-git clone -b master --depth 1 https://github.com/jerrykuku/luci-app-argon-config.git package/new/luci-app-argon-config
+git clone -b master --depth 1 https://git.glan.space/github/luci-app-argon-config.git package/new/luci-app-argon-config
 # MAC 地址与 IP 绑定
 svn export https://github.com/immortalwrt/luci/trunk/applications/luci-app-arpbind feeds/luci/applications/luci-app-arpbind
 ln -sf ../../../feeds/luci/applications/luci-app-arpbind ./package/feeds/luci/luci-app-arpbind
@@ -207,7 +207,7 @@ svn export https://github.com/kenzok8/openwrt-packages/trunk/luci-app-aliddns fe
 ln -sf ../../../feeds/luci/applications/luci-app-aliddns ./package/feeds/luci/luci-app-aliddns
 # Docker 容器（会导致 OpenWrt 出现 UDP 转发问题，慎用）
 rm -rf ./feeds/luci/applications/luci-app-dockerman
-svn export https://github.com/lisaac/luci-app-dockerman/trunk/applications/luci-app-dockerman feeds/luci/applications/luci-app-dockerman
+svn export https://git.glan.space/github/luci-app-dockerman.git/trunk/applications/luci-app-dockerman feeds/luci/applications/luci-app-dockerman
 rm -rf ./feeds/luci/collections/luci-lib-docker
 svn export https://github.com/lisaac/luci-lib-docker/trunk/collections/luci-lib-docker feeds/luci/collections/luci-lib-docker
 #sed -i 's/+docker/+docker \\\n\t+dockerd/g' ./feeds/luci/applications/luci-app-dockerman/Makefile
@@ -264,8 +264,8 @@ popd
 git clone -b master --depth 1 https://github.com/NateLol/luci-app-oled.git package/new/luci-app-oled
 wget -qO - https://github.com/openwrt/openwrt/commit/efc8aff.patch | patch -p1
 # 花生壳内网穿透
-svn export https://github.com/teasiu/dragino2/trunk/devices/common/diy/package/teasiu/luci-app-phtunnel package/new/luci-app-phtunnel
-svn export https://github.com/teasiu/dragino2/trunk/devices/common/diy/package/teasiu/phtunnel package/new/phtunnel
+svn export https://git.glan.space/github/dragino2.git/trunk/devices/common/diy/package/teasiu/luci-app-phtunnel package/new/luci-app-phtunnel
+svn export https://git.glan.space/github/dragino2.git/trunk/devices/common/diy/package/teasiu/phtunnel package/new/phtunnel
 svn export https://github.com/QiuSimons/dragino2-teasiu/trunk/package/teasiu/luci-app-oray package/new/luci-app-oray
 # Passwall
 #svn export https://github.com/immortalwrt/luci/trunk/applications/luci-app-passwall package/new/luci-app-passwall
@@ -399,7 +399,7 @@ ln -sf ../../../feeds/packages/libs/quickjspp ./package/feeds/packages/quickjspp
 svn export https://github.com/immortalwrt/packages/trunk/libs/toml11 feeds/packages/libs/toml11
 ln -sf ../../../feeds/packages/libs/toml11 ./package/feeds/packages/toml11
 # 网易云音乐解锁
-git clone --depth 1 https://github.com/immortalwrt/luci-app-unblockneteasemusic.git package/new/UnblockNeteaseMusic
+git clone --depth 1 https://git.glan.space/github/luci-app-unblockneteasemusic.git package/new/UnblockNeteaseMusic
 # ucode
 svn export https://github.com/openwrt/openwrt/trunk/package/utils/ucode package/utils/ucode
 # USB 打印机
@@ -481,11 +481,9 @@ https://github.com/coolsnowwolf/packages
 https://github.com/Frogging-Family/linux-tkg
 https://github.com/fw876/helloworld
 https://github.com/immortalwrt/immortalwrt
-https://github.com/immortalwrt/luci-app-unblockneteasemusic.git
 https://github.com/immortalwrt/luci
 https://github.com/immortalwrt/packages
 https://github.com/jerrykuku/lua-maxminddb.git
-https://github.com/jerrykuku/luci-app-argon-config.git
 https://github.com/jerrykuku/luci-app-jd-dailybonus.git
 https://github.com/jerrykuku/luci-app-vssr.git
 https://github.com/jerrykuku/luci-theme-argon.git
@@ -496,7 +494,6 @@ https://github.com/KyleRicardo/MentoHUST-OpenWrt-ipk
 https://github.com/Lienol/openwrt-package
 https://github.com/Lienol/openwrt-packages
 https://github.com/Lienol/openwrt
-https://github.com/lisaac/luci-app-dockerman
 https://github.com/lisaac/luci-lib-docker
 https://github.com/msylgj/R2S-R4S-OpenWrt
 https://github.com/NateLol/luci-app-oled.git
@@ -515,5 +512,4 @@ https://github.com/QiuSimons/openwrt-NoTengoBattery
 https://github.com/QiuSimons/OpenWrt_luci-app
 https://github.com/QiuSimons/slim-wrt/branches/main/slimapps/application/luci-app-boostupnp
 https://github.com/rufengsuixing/luci-app-adguardhome.git
-https://github.com/teasiu/dragino2
 https://github.com/zxlhhyccc/bf-package-master
