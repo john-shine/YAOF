@@ -118,7 +118,7 @@ sed -i 's/"getTempInfo" /"getTempInfo", "getCPUBench", "getCPUUsage" /g' package
 rm -rf ./feeds/packages/utils/coremark
 svn export https://github.com/immortalwrt/packages/trunk/utils/coremark feeds/packages/utils/coremark
 # DPDK
-svn export https://github.com/QiuSimons/OpenWrt-Add/trunk/dpdk package/new/dpdk
+svn export https://git.glan.space/github/OpenWrt-Add.git/trunk/dpdk package/new/dpdk
 # 更换 Nodejs 版本
 rm -rf ./feeds/packages/lang/node
 svn export https://git.glan.space/github/openwrt-node-packages.git/trunk/node feeds/packages/lang/node
@@ -149,18 +149,18 @@ sed -i 's,kmod-usb-net-rtl8152,kmod-usb-net-rtl8152-vendor,g' target/linux/rockc
 # UPX 可执行软件压缩
 sed -i '/patchelf pkgconf/i\tools-y += ucl upx' ./tools/Makefile
 sed -i '\/autoconf\/compile :=/i\$(curdir)/upx/compile := $(curdir)/ucl/compile' ./tools/Makefile
-svn export https://github.com/coolsnowwolf/openwrt/branches/lede-17.01/tools/ucl tools/ucl
-svn export https://github.com/coolsnowwolf/openwrt/branches/lede-17.01/tools/upx tools/upx
+svn export https://git.glan.space/github/coolsnowwolf-openwrt.git/branches/lede-17.01/tools/ucl tools/ucl
+svn export https://git.glan.space/github/coolsnowwolf-openwrt.git/branches/lede-17.01/tools/upx tools/upx
 
 ### 获取额外的 LuCI 应用、主题和依赖 ###
 # 更换 golang 版本
 rm -rf ./feeds/packages/lang/golang
 svn export https://github.com/openwrt/packages/trunk/lang/golang feeds/packages/lang/golang
 # 访问控制
-svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-accesscontrol package/lean/luci-app-accesscontrol
-svn export https://github.com/QiuSimons/OpenWrt-Add/trunk/luci-app-control-weburl package/new/luci-app-control-weburl
+svn export https://git.glan.space/github/coolsnowwolf-luci.git/trunk/applications/luci-app-accesscontrol package/lean/luci-app-accesscontrol
+svn export https://git.glan.space/github/OpenWrt-Add.git/trunk/luci-app-control-weburl package/new/luci-app-control-weburl
 # 广告过滤 Adbyby
-svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-adbyby-plus package/lean/luci-app-adbyby-plus
+svn export https://git.glan.space/github/coolsnowwolf-luci.git/trunk/applications/luci-app-adbyby-plus package/lean/luci-app-adbyby-plus
 svn export https://github.com/coolsnowwolf/lede/trunk/package/lean/adbyby package/lean/adbyby
 # 广告过滤 AdGuard
 #svn export https://github.com/Lienol/openwrt/trunk/package/diy/luci-app-adguardhome package/new/luci-app-adguardhome
@@ -171,7 +171,7 @@ sed -i '/\t)/a\\t$(STAGING_DIR_HOST)/bin/upx --lzma --best $(GO_PKG_BUILD_BIN_DI
 sed -i '/init/d' feeds/packages/net/adguardhome/Makefile
 # Argon 主题
 git clone https://git.glan.space/github/luci-theme-argon.git package/new/luci-theme-argon
-wget -P package/new/luci-theme-argon/htdocs/luci-static/argon/background/ https://github.com/QiuSimons/OpenWrt-Add/raw/master/5808303.jpg
+wget -P package/new/luci-theme-argon/htdocs/luci-static/argon/background/ https://git.glan.space/github/OpenWrt-Add.git/raw/master/5808303.jpg
 rm -rf ./package/new/luci-theme-argon/htdocs/luci-static/argon/background/README.md
 #pushd package/new/luci-theme-argon
 #git checkout 3b15d06
@@ -181,7 +181,7 @@ git clone -b master --depth 1 https://git.glan.space/github/luci-app-argon-confi
 svn export https://github.com/immortalwrt/luci/trunk/applications/luci-app-arpbind feeds/luci/applications/luci-app-arpbind
 ln -sf ../../../feeds/luci/applications/luci-app-arpbind ./package/feeds/luci/luci-app-arpbind
 # 定时重启
-svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-autoreboot package/lean/luci-app-autoreboot
+svn export https://git.glan.space/github/coolsnowwolf-luci.git/trunk/applications/luci-app-autoreboot package/lean/luci-app-autoreboot
 # Boost 通用即插即用
 svn export https://git.glan.space/github/luci-app-boostupnp.git package/new/luci-app-boostupnp
 rm -rf ./feeds/packages/net/miniupnpd
@@ -195,7 +195,7 @@ ln -sf ../../../feeds/luci/applications/luci-app-cpufreq ./package/feeds/luci/lu
 sed -i 's,1608,1800,g' feeds/luci/applications/luci-app-cpufreq/root/etc/uci-defaults/cpufreq
 sed -i 's,2016,2208,g' feeds/luci/applications/luci-app-cpufreq/root/etc/uci-defaults/cpufreq
 sed -i 's,1512,1608,g' feeds/luci/applications/luci-app-cpufreq/root/etc/uci-defaults/cpufreq
-svn export https://github.com/QiuSimons/OpenWrt-Add/trunk/luci-app-cpulimit package/lean/luci-app-cpulimit
+svn export https://git.glan.space/github/OpenWrt-Add.git/trunk/luci-app-cpulimit package/lean/luci-app-cpulimit
 svn export https://github.com/immortalwrt/packages/trunk/utils/cpulimit feeds/packages/utils/cpulimit
 ln -sf ../../../feeds/packages/utils/cpulimit ./package/feeds/packages/cpulimit
 # 动态DNS
@@ -223,7 +223,7 @@ git clone --depth 1 https://git.glan.space/github/luci-app-dnsfilter.git package
 svn export https://github.com/immortalwrt/packages/trunk/net/dnsproxy feeds/packages/net/dnsproxy
 ln -sf ../../../feeds/packages/net/dnsproxy ./package/feeds/packages/dnsproxy
 sed -i '/CURDIR/d' feeds/packages/net/dnsproxy/Makefile
-svn export https://github.com/QiuSimons/OpenWrt-Add/trunk/luci-app-dnsproxy package/new/luci-app-dnsproxy
+svn export https://git.glan.space/github/OpenWrt-Add.git/trunk/luci-app-dnsproxy package/new/luci-app-dnsproxy
 # Edge 主题
 git clone -b master --depth 1 https://git.glan.space/github/luci-theme-edge.git package/new/luci-theme-edge
 # FRP 内网穿透
@@ -231,11 +231,11 @@ rm -rf ./feeds/luci/applications/luci-app-frps
 rm -rf ./feeds/luci/applications/luci-app-frpc
 rm -rf ./feeds/packages/net/frp
 rm -f ./package/feeds/packages/frp
-svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-frps package/lean/luci-app-frps
-svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-frpc package/lean/luci-app-frpc
+svn export https://git.glan.space/github/coolsnowwolf-luci.git/trunk/applications/luci-app-frps package/lean/luci-app-frps
+svn export https://git.glan.space/github/coolsnowwolf-luci.git/trunk/applications/luci-app-frpc package/lean/luci-app-frpc
 svn export https://github.com/coolsnowwolf/packages/trunk/net/frp package/lean/frp
 # IPSec
-svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-ipsec-server package/lean/luci-app-ipsec-server
+svn export https://git.glan.space/github/coolsnowwolf-luci.git/trunk/applications/luci-app-ipsec-server package/lean/luci-app-ipsec-server
 # IPv6 兼容助手
 svn export https://github.com/coolsnowwolf/lede/trunk/package/lean/ipv6-helper package/lean/ipv6-helper
 # Mosdns
@@ -247,7 +247,7 @@ svn export https://github.com/QiuSimons/openwrt-mos/trunk/mosdns package/new/mos
 svn export https://github.com/QiuSimons/openwrt-mos/trunk/luci-app-mosdns package/new/luci-app-mosdns
 svn export https://github.com/QiuSimons/openwrt-mos/trunk/v2ray-geodata package/new/v2ray-geodata
 # 流量监管
-svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-netdata package/lean/luci-app-netdata
+svn export https://git.glan.space/github/coolsnowwolf-luci.git/trunk/applications/luci-app-netdata package/lean/luci-app-netdata
 # 上网 APP 过滤
 git clone -b master --depth 1 https://git.glan.space/github/OpenAppFilter.git package/new/OpenAppFilter
 pushd package/new/OpenAppFilter
@@ -274,7 +274,7 @@ sed -i '/shadowsocks-libev-ss-redir/d' Makefile
 sed -i '/shadowsocks-libev-ss-server/d' Makefile
 sed -i '/shadowsocks-libev-ss-local/d' Makefile
 popd
-wget -P package/new/luci-app-passwall/ https://github.com/QiuSimons/OpenWrt-Add/raw/master/move_2_services.sh
+wget -P package/new/luci-app-passwall/ https://git.glan.space/github/OpenWrt-Add.git/raw/master/move_2_services.sh
 chmod -R 755 ./package/new/luci-app-passwall/move_2_services.sh
 pushd package/new/luci-app-passwall
 bash move_2_services.sh
@@ -284,12 +284,12 @@ svn export https://github.com/Lienol/openwrt-packages/trunk/net/https-dns-proxy 
 svn export https://git.glan.space/github/openwrt-passwall.git/trunk/tcping package/new/tcping
 svn export https://git.glan.space/github/openwrt-passwall.git/trunk/trojan-go package/new/trojan-go
 svn export https://git.glan.space/github/openwrt-passwall.git/trunk/brook package/new/brook
-svn export https://github.com/QiuSimons/OpenWrt-Add/trunk/trojan-plus package/new/trojan-plus
+svn export https://git.glan.space/github/OpenWrt-Add.git/trunk/trojan-plus package/new/trojan-plus
 svn export https://git.glan.space/github/openwrt-passwall.git/trunk/ssocks package/new/ssocks
 svn export https://git.glan.space/github/openwrt-passwall.git/trunk/hysteria package/new/hysteria
 # passwall2
 svn export https://git.glan.space/github/openwrt-passwall2.git/trunk/luci-app-passwall2 package/new/luci-app-passwall2
-wget -P package/new/luci-app-passwall2/ https://github.com/QiuSimons/OpenWrt-Add/raw/master/move_2_services.sh
+wget -P package/new/luci-app-passwall2/ https://git.glan.space/github/OpenWrt-Add.git/raw/master/move_2_services.sh
 chmod -R 755 ./package/new/luci-app-passwall2/move_2_services.sh
 pushd package/new/luci-app-passwall2
 bash move_2_services.sh
@@ -303,14 +303,14 @@ sed -i '/shadowsocks-libev-ss-server/d' Makefile
 sed -i '/shadowsocks-libev-ss-local/d' Makefile
 popd
 # qBittorrent 下载
-svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-qbittorrent package/lean/luci-app-qbittorrent
+svn export https://git.glan.space/github/coolsnowwolf-luci.git/trunk/applications/luci-app-qbittorrent package/lean/luci-app-qbittorrent
 svn export https://github.com/coolsnowwolf/packages/trunk/net/qBittorrent-static package/lean/qBittorrent-static
 svn export https://github.com/coolsnowwolf/packages/trunk/net/qBittorrent package/lean/qBittorrent
 svn export https://github.com/coolsnowwolf/packages/trunk/libs/qtbase package/lean/qtbase
 svn export https://github.com/coolsnowwolf/packages/trunk/libs/qttools package/lean/qttools
 svn export https://github.com/coolsnowwolf/packages/trunk/libs/rblibtorrent package/lean/rblibtorrent
 # 清理内存
-svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-ramfree package/lean/luci-app-ramfree
+svn export https://git.glan.space/github/coolsnowwolf-luci.git/trunk/applications/luci-app-ramfree package/lean/luci-app-ramfree
 # ServerChan 微信推送
 git clone -b master --depth 1 https://git.glan.space/github/luci-app-serverchan.git package/new/luci-app-serverchan
 # SmartDNS
@@ -397,12 +397,12 @@ git clone --depth 1 https://git.glan.space/github/luci-app-unblockneteasemusic.g
 # ucode
 svn export https://github.com/openwrt/openwrt/trunk/package/utils/ucode package/utils/ucode
 # USB 打印机
-svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-usb-printer package/lean/luci-app-usb-printer
+svn export https://git.glan.space/github/coolsnowwolf-luci.git/trunk/applications/luci-app-usb-printer package/lean/luci-app-usb-printer
 # UU加速器
-svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-uugamebooster package/lean/luci-app-uugamebooster
+svn export https://git.glan.space/github/coolsnowwolf-luci.git/trunk/applications/luci-app-uugamebooster package/lean/luci-app-uugamebooster
 svn export https://github.com/coolsnowwolf/packages/trunk/net/uugamebooster package/lean/uugamebooster
 # KMS 激活助手
-svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-vlmcsd package/lean/luci-app-vlmcsd
+svn export https://git.glan.space/github/coolsnowwolf-luci.git/trunk/applications/luci-app-vlmcsd package/lean/luci-app-vlmcsd
 svn export https://github.com/coolsnowwolf/packages/trunk/net/vlmcsd package/lean/vlmcsd
 # VSSR
 git clone -b master --depth 1 https://github.com/jerrykuku/luci-app-vssr.git package/lean/luci-app-vssr
@@ -427,7 +427,7 @@ git clone -b master --depth 1 https://git.glan.space/github/luci-app-wrtbwmon.gi
 git clone --depth 1 https://git.glan.space/github/luci-app-xlnetacc.git package/lean/luci-app-xlnetacc
 # Zerotier
 svn export https://github.com/immortalwrt/luci/trunk/applications/luci-app-zerotier feeds/luci/applications/luci-app-zerotier
-wget -P feeds/luci/applications/luci-app-zerotier/ https://github.com/QiuSimons/OpenWrt-Add/raw/master/move_2_services.sh
+wget -P feeds/luci/applications/luci-app-zerotier/ https://git.glan.space/github/OpenWrt-Add.git/raw/master/move_2_services.sh
 chmod -R 755 ./feeds/luci/applications/luci-app-zerotier/move_2_services.sh
 pushd feeds/luci/applications/luci-app-zerotier
 bash move_2_services.sh
@@ -438,12 +438,12 @@ svn export https://github.com/openwrt/packages/trunk/net/zerotier feeds/packages
 rm -rf ./feeds/packages/net/zerotier/files/etc/init.d/zerotier
 sed -i '/Default,one/a\\t$(STAGING_DIR_HOST)/bin/upx --lzma --best $(PKG_BUILD_DIR)/zerotier-one' feeds/packages/net/zerotier/Makefile
 # 翻译及部分功能优化
-svn export https://github.com/QiuSimons/OpenWrt-Add/trunk/addition-trans-zh package/lean/lean-translate
+svn export https://git.glan.space/github/OpenWrt-Add.git/trunk/addition-trans-zh package/lean/lean-translate
 
 ### 最后的收尾工作 ###
 # Lets Fuck
 mkdir package/base-files/files/usr/bin
-wget -P package/base-files/files/usr/bin/ https://github.com/QiuSimons/OpenWrt-Add/raw/master/fuck
+wget -P package/base-files/files/usr/bin/ https://git.glan.space/github/OpenWrt-Add.git/raw/master/fuck
 # 最大连接数
 sed -i 's/16384/65535/g' package/kernel/linux/files/sysctl-nf-conntrack.conf
 # 生成默认配置及缓存
@@ -459,7 +459,7 @@ rm -rf .config
 # Shortcut-FE 相关组件
 #svn export https://github.com/coolsnowwolf/lede/trunk/package/lean/shortcut-fe package/lean/shortcut-fe
 #svn export https://github.com/coolsnowwolf/lede/trunk/package/lean/fast-classifier package/lean/fast-classifier
-#wget -P package/base-files/files/etc/init.d/ https://github.com/QiuSimons/OpenWrt-Add/raw/master/shortcut-fe
+#wget -P package/base-files/files/etc/init.d/ https://git.glan.space/github/OpenWrt-Add.git/raw/master/shortcut-fe
 
 # 回滚通用即插即用
 #rm -rf ./feeds/packages/net/miniupnpd
@@ -469,8 +469,6 @@ rm -rf .config
 
 
 https://github.com/coolsnowwolf/lede
-https://github.com/coolsnowwolf/luci
-https://github.com/coolsnowwolf/openwrt
 https://github.com/coolsnowwolf/packages
 https://github.com/immortalwrt/luci
 https://github.com/immortalwrt/packages
@@ -485,7 +483,6 @@ https://github.com/openwrt/openwrt
 https://github.com/openwrt/packages
 https://github.com/QiuSimons/packages
 https://github.com/QiuSimons/Chnroute
-https://github.com/QiuSimons/OpenWrt-Add
 https://github.com/QiuSimons/openwrt-chinadns-ng.git
 https://github.com/QiuSimons/openwrt-mos
 https://github.com/QiuSimons/OpenWrt_luci-app
