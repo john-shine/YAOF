@@ -188,7 +188,7 @@ rm -rf ./feeds/packages/net/miniupnpd
 svn export https://github.com/coolsnowwolf/packages/trunk/net/miniupnpd feeds/packages/net/miniupnpd
 # ChinaDNS
 git clone -b luci --depth 1 https://github.com/QiuSimons/openwrt-chinadns-ng.git package/new/luci-app-chinadns-ng
-svn export https://github.com/xiaorouji/openwrt-passwall/trunk/chinadns-ng package/new/chinadns-ng
+svn export https://git.glan.space/github/openwrt-passwall.git/trunk/chinadns-ng package/new/chinadns-ng
 # CPU 控制相关
 svn export https://github.com/immortalwrt/luci/trunk/applications/luci-app-cpufreq feeds/luci/applications/luci-app-cpufreq
 ln -sf ../../../feeds/luci/applications/luci-app-cpufreq ./package/feeds/luci/luci-app-cpufreq
@@ -218,14 +218,14 @@ wget https://raw.githubusercontent.com/lisaac/luci-app-diskman/master/applicatio
 mkdir -p package/new/parted && \
 wget https://raw.githubusercontent.com/lisaac/luci-app-diskman/master/Parted.Makefile -O package/new/parted/Makefile
 # Dnsfilter
-git clone --depth 1 https://github.com/kiddin9/luci-app-dnsfilter.git package/new/luci-app-dnsfilter
+git clone --depth 1 https://git.glan.space/github/luci-app-dnsfilter.git package/new/luci-app-dnsfilter
 # Dnsproxy
 svn export https://github.com/immortalwrt/packages/trunk/net/dnsproxy feeds/packages/net/dnsproxy
 ln -sf ../../../feeds/packages/net/dnsproxy ./package/feeds/packages/dnsproxy
 sed -i '/CURDIR/d' feeds/packages/net/dnsproxy/Makefile
 svn export https://github.com/QiuSimons/OpenWrt-Add/trunk/luci-app-dnsproxy package/new/luci-app-dnsproxy
 # Edge 主题
-git clone -b master --depth 1 https://github.com/kiddin9/luci-theme-edge.git package/new/luci-theme-edge
+git clone -b master --depth 1 https://git.glan.space/github/luci-theme-edge.git package/new/luci-theme-edge
 # FRP 内网穿透
 rm -rf ./feeds/luci/applications/luci-app-frps
 rm -rf ./feeds/luci/applications/luci-app-frpc
@@ -271,7 +271,7 @@ svn export https://github.com/teasiu/dragino2/trunk/devices/common/diy/package/t
 svn export https://github.com/QiuSimons/dragino2-teasiu/trunk/package/teasiu/luci-app-oray package/new/luci-app-oray
 # Passwall
 #svn export https://github.com/immortalwrt/luci/trunk/applications/luci-app-passwall package/new/luci-app-passwall
-svn export https://github.com/xiaorouji/openwrt-passwall/branches/luci/luci-app-passwall package/new/luci-app-passwall
+svn export https://git.glan.space/github/openwrt-passwall.git/branches/luci/luci-app-passwall package/new/luci-app-passwall
 pushd package/new/luci-app-passwall
 sed -i 's,default n,default y,g' Makefile
 sed -i '/trojan-go/d' Makefile
@@ -289,14 +289,14 @@ bash move_2_services.sh
 popd
 rm -rf ./feeds/packages/net/https-dns-proxy
 svn export https://github.com/Lienol/openwrt-packages/trunk/net/https-dns-proxy feeds/packages/net/https-dns-proxy
-svn export https://github.com/xiaorouji/openwrt-passwall/trunk/tcping package/new/tcping
-svn export https://github.com/xiaorouji/openwrt-passwall/trunk/trojan-go package/new/trojan-go
-svn export https://github.com/xiaorouji/openwrt-passwall/trunk/brook package/new/brook
+svn export https://git.glan.space/github/openwrt-passwall.git/trunk/tcping package/new/tcping
+svn export https://git.glan.space/github/openwrt-passwall.git/trunk/trojan-go package/new/trojan-go
+svn export https://git.glan.space/github/openwrt-passwall.git/trunk/brook package/new/brook
 svn export https://github.com/QiuSimons/OpenWrt-Add/trunk/trojan-plus package/new/trojan-plus
-svn export https://github.com/xiaorouji/openwrt-passwall/trunk/ssocks package/new/ssocks
-svn export https://github.com/xiaorouji/openwrt-passwall/trunk/hysteria package/new/hysteria
+svn export https://git.glan.space/github/openwrt-passwall.git/trunk/ssocks package/new/ssocks
+svn export https://git.glan.space/github/openwrt-passwall.git/trunk/hysteria package/new/hysteria
 # passwall2
-svn export https://github.com/xiaorouji/openwrt-passwall2/trunk/luci-app-passwall2 package/new/luci-app-passwall2
+svn export https://git.glan.space/github/openwrt-passwall2.git/trunk/luci-app-passwall2 package/new/luci-app-passwall2
 wget -P package/new/luci-app-passwall2/ https://github.com/QiuSimons/OpenWrt-Add/raw/master/move_2_services.sh
 chmod -R 755 ./package/new/luci-app-passwall2/move_2_services.sh
 pushd package/new/luci-app-passwall2
@@ -331,23 +331,23 @@ rm -rf ./feeds/packages/net/kcptun
 rm -rf ./feeds/packages/net/shadowsocks-libev
 rm -rf ./feeds/packages/net/xray-core
 svn export https://github.com/coolsnowwolf/packages/trunk/net/shadowsocks-libev package/lean/shadowsocks-libev
-svn export https://github.com/xiaorouji/openwrt-passwall/trunk/shadowsocksr-libev package/lean/shadowsocksr-libev
-svn export https://github.com/xiaorouji/openwrt-passwall/trunk/pdnsd-alt package/lean/pdnsd
+svn export https://git.glan.space/github/openwrt-passwall.git/trunk/shadowsocksr-libev package/lean/shadowsocksr-libev
+svn export https://git.glan.space/github/openwrt-passwall.git/trunk/pdnsd-alt package/lean/pdnsd
 svn export https://github.com/coolsnowwolf/lede/trunk/package/lean/srelay package/lean/srelay
-svn export https://github.com/xiaorouji/openwrt-passwall/trunk/microsocks package/lean/microsocks
-svn export https://github.com/xiaorouji/openwrt-passwall/trunk/dns2socks package/lean/dns2socks
+svn export https://git.glan.space/github/openwrt-passwall.git/trunk/microsocks package/lean/microsocks
+svn export https://git.glan.space/github/openwrt-passwall.git/trunk/dns2socks package/lean/dns2socks
 svn export https://github.com/coolsnowwolf/packages/trunk/net/redsocks2 package/lean/redsocks2
-svn export https://github.com/xiaorouji/openwrt-passwall/trunk/ipt2socks package/lean/ipt2socks
-svn export https://github.com/xiaorouji/openwrt-passwall/trunk/trojan package/lean/trojan
-svn export https://github.com/xiaorouji/openwrt-passwall/trunk/tcping package/lean/tcping
-svn export https://github.com/xiaorouji/openwrt-passwall/trunk/trojan-go package/lean/trojan-go
+svn export https://git.glan.space/github/openwrt-passwall.git/trunk/ipt2socks package/lean/ipt2socks
+svn export https://git.glan.space/github/openwrt-passwall.git/trunk/trojan package/lean/trojan
+svn export https://git.glan.space/github/openwrt-passwall.git/trunk/tcping package/lean/tcping
+svn export https://git.glan.space/github/openwrt-passwall.git/trunk/trojan-go package/lean/trojan-go
 svn export https://github.com/fw876/helloworld/trunk/simple-obfs package/lean/simple-obfs
 svn export https://github.com/fw876/helloworld/trunk/naiveproxy package/lean/naiveproxy
 svn export https://github.com/fw876/helloworld/trunk/v2ray-core package/lean/v2ray-core
 svn export https://github.com/fw876/helloworld/trunk/xray-core package/lean/xray-core
 svn export https://github.com/fw876/helloworld/trunk/v2ray-plugin package/lean/v2ray-plugin
 svn export https://github.com/fw876/helloworld/trunk/xray-plugin package/lean/xray-plugin
-svn export https://github.com/xiaorouji/openwrt-passwall/trunk/shadowsocks-rust feeds/packages/net/shadowsocks-rust
+svn export https://git.glan.space/github/openwrt-passwall.git/trunk/shadowsocks-rust feeds/packages/net/shadowsocks-rust
 #svn export https://github.com/immortalwrt/packages/trunk/net/shadowsocks-rust feeds/packages/net/shadowsocks-rust
 sed -i '/Build\/Compile/a\\t$(STAGING_DIR_HOST)/bin/upx --lzma --best $$(PKG_BUILD_DIR)/$(component)' feeds/packages/net/shadowsocks-rust/Makefile
 ln -sf ../../../feeds/packages/net/shadowsocks-rust ./package/feeds/packages/shadowsocks-rust
@@ -376,7 +376,7 @@ sed -i 's,YW5vbnltb3Vz/domain-list-community/release/gfwlist.txt,Loyalsoldier/v2
 sed -i '/Clang.CN.CIDR/a\o:value("https://gh.404delivr.workers.dev/https://github.com/QiuSimons/Chnroute/raw/master/dist/chnroute/chnroute.txt", translate("QiuSimons/Chnroute"))' luasrc/model/cbi/shadowsocksr/advanced.lua
 popd
 # v2raya
-git clone --depth 1 https://github.com/zxlhhyccc/luci-app-v2raya.git package/new/luci-app-v2raya
+git clone --depth 1 https://git.glan.space/github/luci-app-v2raya.git package/new/luci-app-v2raya
 svn export https://github.com/openwrt/packages/trunk/net/v2raya feeds/packages/net/v2raya
 ln -sf ../../../feeds/packages/net/v2raya ./package/feeds/packages/v2raya
 # socat
@@ -432,7 +432,7 @@ svn export https://github.com/zxlhhyccc/bf-package-master/trunk/zxlhhyccc/luci-a
 git clone -b master --depth 1 https://git.glan.space/github/wrtbwmon.git package/new/wrtbwmon
 git clone -b master --depth 1 https://git.glan.space/github/luci-app-wrtbwmon.git package/new/luci-app-wrtbwmon
 # 迅雷快鸟宽带加速
-git clone --depth 1 https://github.com/kiddin9/luci-app-xlnetacc.git package/lean/luci-app-xlnetacc
+git clone --depth 1 https://git.glan.space/github/luci-app-xlnetacc.git package/lean/luci-app-xlnetacc
 # Zerotier
 svn export https://github.com/immortalwrt/luci/trunk/applications/luci-app-zerotier feeds/luci/applications/luci-app-zerotier
 wget -P feeds/luci/applications/luci-app-zerotier/ https://github.com/QiuSimons/OpenWrt-Add/raw/master/move_2_services.sh
@@ -493,9 +493,6 @@ https://github.com/jerrykuku/luci-app-vssr.git
 https://github.com/jerrykuku/luci-theme-argon.git
 https://github.com/jerrykuku/node-request.git
 https://github.com/kenzok8/openwrt-packages
-https://github.com/kiddin9/luci-app-dnsfilter.git
-https://github.com/kiddin9/luci-app-xlnetacc.git
-https://github.com/kiddin9/luci-theme-edge.git
 https://github.com/kiddin9/openwrt-packages
 https://github.com/KyleRicardo/MentoHUST-OpenWrt-ipk
 https://github.com/Lienol/openwrt-package
@@ -523,7 +520,4 @@ https://github.com/rufengsuixing/luci-app-adguardhome.git
 https://github.com/teasiu/dragino2
 https://github.com/tty228/luci-app-serverchan.git
 https://github.com/vernesong/OpenClash.git
-https://github.com/xiaorouji/openwrt-passwall
-https://github.com/xiaorouji/openwrt-passwall2
 https://github.com/zxlhhyccc/bf-package-master
-https://github.com/zxlhhyccc/luci-app-v2raya.git
