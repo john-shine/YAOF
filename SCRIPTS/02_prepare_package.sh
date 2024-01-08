@@ -405,7 +405,7 @@ svn export https://git.glan.space/github/coolsnowwolf-packages.git/trunk/net/uug
 svn export https://git.glan.space/github/coolsnowwolf-luci.git/trunk/applications/luci-app-vlmcsd package/lean/luci-app-vlmcsd
 svn export https://git.glan.space/github/coolsnowwolf-packages.git/trunk/net/vlmcsd package/lean/vlmcsd
 # VSSR
-git clone -b master --depth 1 https://github.com/jerrykuku/luci-app-vssr.git package/lean/luci-app-vssr
+git clone -b master --depth 1 https://git.glan.space/github/luci-app-vssr.git package/lean/luci-app-vssr
 git clone -b master --depth 1 https://git.glan.space/github/lua-maxminddb.git package/lean/lua-maxminddb
 pushd package/lean/luci-app-vssr
 sed -i 's,default n,default y,g' Makefile
@@ -466,6 +466,3 @@ rm -rf .config
 #svn export https://git.glan.space/github/coolsnowwolf-packages.git/trunk/net/miniupnpd feeds/packages/net/miniupnpd
 
 #exit 0
-
-
-https://github.com/jerrykuku/luci-app-vssr.git
