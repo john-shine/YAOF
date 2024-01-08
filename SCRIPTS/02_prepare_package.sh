@@ -69,9 +69,9 @@ pushd feeds/packages
 wget -qO - https://github.com/QiuSimons/packages/commit/7ffbfbe.patch | patch -p1
 popd
 # OPENSSL
-wget -P package/libs/openssl/patches/ https://github.com/openssl/openssl/pull/11895.patch
-wget -P package/libs/openssl/patches/ https://github.com/openssl/openssl/pull/14578.patch
-wget -P package/libs/openssl/patches/ https://github.com/openssl/openssl/pull/16575.patch
+wget -P package/libs/openssl/patches/ https://git.glan.space/github/openssl.git/pull/11895.patch
+wget -P package/libs/openssl/patches/ https://git.glan.space/github/openssl.git/pull/14578.patch
+wget -P package/libs/openssl/patches/ https://git.glan.space/github/openssl.git/pull/16575.patch
 
 ### Fullcone-NAT 部分 ###
 # Patch Kernel 以解决 FullCone 冲突
@@ -187,7 +187,7 @@ svn export https://git.glan.space/github/luci-app-boostupnp.git package/new/luci
 rm -rf ./feeds/packages/net/miniupnpd
 svn export https://github.com/coolsnowwolf/packages/trunk/net/miniupnpd feeds/packages/net/miniupnpd
 # ChinaDNS
-git clone -b luci --depth 1 https://github.com/QiuSimons/openwrt-chinadns-ng.git package/new/luci-app-chinadns-ng
+git clone -b luci --depth 1 https://git.glan.space/github/openwrt-chinadns-ng.git package/new/luci-app-chinadns-ng
 svn export https://git.glan.space/github/openwrt-passwall.git/trunk/chinadns-ng package/new/chinadns-ng
 # CPU 控制相关
 svn export https://github.com/immortalwrt/luci/trunk/applications/luci-app-cpufreq feeds/luci/applications/luci-app-cpufreq
@@ -202,7 +202,7 @@ ln -sf ../../../feeds/packages/utils/cpulimit ./package/feeds/packages/cpulimit
 sed -i '/boot()/,+2d' feeds/packages/net/ddns-scripts/files/etc/init.d/ddns
 svn export https://github.com/kiddin9/openwrt-packages/trunk/ddns-scripts-aliyun package/lean/ddns-scripts_dnspod
 svn export https://github.com/kiddin9/openwrt-packages/trunk/ddns-scripts-dnspod package/lean/ddns-scripts_aliyun
-svn export https://github.com/QiuSimons/OpenWrt_luci-app/trunk/luci-app-tencentddns package/lean/luci-app-tencentddns
+svn export https://git.glan.space/github/OpenWrt_luci-app.git/trunk/luci-app-tencentddns package/lean/luci-app-tencentddns
 svn export https://github.com/kenzok8/openwrt-packages/trunk/luci-app-aliddns feeds/luci/applications/luci-app-aliddns
 ln -sf ../../../feeds/luci/applications/luci-app-aliddns ./package/feeds/luci/luci-app-aliddns
 # Docker 容器（会导致 OpenWrt 出现 UDP 转发问题，慎用）
@@ -243,9 +243,9 @@ svn export https://github.com/coolsnowwolf/lede/trunk/package/lean/ipv6-helper p
 #ln -sf ../../../feeds/packages/net/mosdns ./package/feeds/packages/mosdns
 #sed -i '/config.yaml/d' feeds/packages/net/mosdns/Makefile
 #sed -i '/mosdns-init-openwrt/d' feeds/packages/net/mosdns/Makefile
-svn export https://github.com/QiuSimons/openwrt-mos/trunk/mosdns package/new/mosdns
-svn export https://github.com/QiuSimons/openwrt-mos/trunk/luci-app-mosdns package/new/luci-app-mosdns
-svn export https://github.com/QiuSimons/openwrt-mos/trunk/v2ray-geodata package/new/v2ray-geodata
+svn export https://git.glan.space/github/openwrt-mos.git/trunk/mosdns package/new/mosdns
+svn export https://git.glan.space/github/openwrt-mos.git/trunk/luci-app-mosdns package/new/luci-app-mosdns
+svn export https://git.glan.space/github/openwrt-mos.git/trunk/v2ray-geodata package/new/v2ray-geodata
 # 流量监管
 svn export https://git.glan.space/github/coolsnowwolf-luci.git/trunk/applications/luci-app-netdata package/lean/luci-app-netdata
 # 上网 APP 过滤
@@ -363,9 +363,9 @@ sed -i '/shadowsocks-libev-ss-redir/d' Makefile
 sed -i '/shadowsocks-libev-ss-server/d' Makefile
 sed -i '/shadowsocks-libev-ss-local/d' Makefile
 sed -i '/result.encrypt_method/a\result.fast_open = "1"' root/usr/share/shadowsocksr/subscribe.lua
-sed -i 's,ispip.clang.cn/all_cn,gh.404delivr.workers.dev/https://github.com/QiuSimons/Chnroute/raw/master/dist/chnroute/chnroute,' root/etc/init.d/shadowsocksr
+sed -i 's,ispip.clang.cn/all_cn,gh.404delivr.workers.dev/https://git.glan.space/github/Chnroute.git/raw/master/dist/chnroute/chnroute,' root/etc/init.d/shadowsocksr
 sed -i 's,YW5vbnltb3Vz/domain-list-community/release/gfwlist.txt,Loyalsoldier/v2ray-rules-dat/release/gfw.txt,' root/etc/init.d/shadowsocksr
-sed -i '/Clang.CN.CIDR/a\o:value("https://gh.404delivr.workers.dev/https://github.com/QiuSimons/Chnroute/raw/master/dist/chnroute/chnroute.txt", translate("QiuSimons/Chnroute"))' luasrc/model/cbi/shadowsocksr/advanced.lua
+sed -i '/Clang.CN.CIDR/a\o:value("https://gh.404delivr.workers.dev/https://git.glan.space/github/Chnroute.git/raw/master/dist/chnroute/chnroute.txt", translate("QiuSimons/Chnroute"))' luasrc/model/cbi/shadowsocksr/advanced.lua
 popd
 # v2raya
 git clone --depth 1 https://git.glan.space/github/luci-app-v2raya.git package/new/luci-app-v2raya
@@ -478,12 +478,7 @@ https://github.com/kiddin9/openwrt-packages
 https://github.com/Lienol/openwrt-package
 https://github.com/Lienol/openwrt-packages
 https://github.com/Lienol/openwrt
-https://github.com/openssl/openssl
 https://github.com/openwrt/openwrt
 https://github.com/openwrt/packages
 https://github.com/QiuSimons/packages
-https://github.com/QiuSimons/Chnroute
-https://github.com/QiuSimons/openwrt-chinadns-ng.git
-https://github.com/QiuSimons/openwrt-mos
-https://github.com/QiuSimons/OpenWrt_luci-app
 https://github.com/zxlhhyccc/bf-package-master
