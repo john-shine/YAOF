@@ -101,10 +101,6 @@ rm -rf ./package/kernel/linux/modules/video.mk
 wget -P package/kernel/linux/modules/ https://git.glan.space/github/immortalwrt.git/raw/openwrt-21.02/package/kernel/linux/modules/video.mk
 # ImmortalWrt Uboot TMP Fix
 wget -qO- https://git.glan.space/github/immortalwrt.git/commit/433c93e.patch | patch -REp1
-# R4S超频到 2.2/1.8 GHz
-#rm -rf ./target/linux/rockchip/patches-5.4/992-rockchip-rk3399-overclock-to-2.2-1.8-GHz-for-NanoPi4.patch
-#cp -f ../PATCH/target_r4s/991-rockchip-rk3399-overclock-to-2.2-1.8-GHz-for-NanoPi4.patch ./target/linux/rockchip/patches-5.4/991-rockchip-rk3399-overclock-to-2.2-1.8-GHz-for-NanoPi4.patch
-#cp -f ../PATCH/target_r4s/213-RK3399-set-critical-CPU-temperature-for-thermal-throttling.patch ./target/linux/rockchip/patches-5.4/213-RK3399-set-critical-CPU-temperature-for-thermal-throttling.patch
 # Disable Mitigations
 sed -i 's,rootwait,rootwait mitigations=off,g' target/linux/rockchip/image/mmc.bootscript
 sed -i 's,rootwait,rootwait mitigations=off,g' target/linux/rockchip/image/nanopi-r2s.bootscript
