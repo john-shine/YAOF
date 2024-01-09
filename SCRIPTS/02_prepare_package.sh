@@ -93,10 +93,10 @@ popd
 ### 获取额外的基础软件包 ###
 # 更换为 ImmortalWrt Uboot 以及 Target
 rm -rf ./target/linux/rockchip
-svn export https://git.glan.space/github/immortalwrt.git/branches/openwrt-21.02/target/linux/rockchip target/linux/rockchip
+rm -rf repo_tmp; git clone https://git.glan.space/github/immortalwrt.git -b openwrt-21.02 repo_tmp && mkdir -p target/linux/rockchip && rsync -a repo_tmp/target/linux/rockchip/ target/linux/rockchip; rm -rf repo_tmp
 rm -rf ./package/boot/uboot-rockchip
-svn export https://git.glan.space/github/immortalwrt.git/branches/openwrt-21.02/package/boot/uboot-rockchip package/boot/uboot-rockchip
-svn export https://git.glan.space/github/immortalwrt.git/branches/openwrt-21.02/package/boot/arm-trusted-firmware-rockchip-vendor package/boot/arm-trusted-firmware-rockchip-vendor
+rm -rf repo_tmp; git clone https://git.glan.space/github/immortalwrt.git -b openwrt-21.02 repo_tmp && mkdir -p package/boot/uboot-rockchip && rsync -a repo_tmp/package/boot/uboot-rockchip/ package/boot/uboot-rockchip; rm -rf repo_tmp
+rm -rf repo_tmp; git clone https://git.glan.space/github/immortalwrt.git -b openwrt-21.02 repo_tmp && mkdir -p package/boot/arm-trusted-firmware-rockchip-vendor && rsync -a repo_tmp/package/boot/arm-trusted-firmware-rockchip-vendor/ package/boot/arm-trusted-firmware-rockchip-vendor; rm -rf repo_tmp
 rm -rf ./package/kernel/linux/modules/video.mk
 wget -P package/kernel/linux/modules/ https://git.glan.space/github/immortalwrt.git/raw/openwrt-21.02/package/kernel/linux/modules/video.mk
 # ImmortalWrt Uboot TMP Fix
@@ -109,7 +109,7 @@ sed -i 's,noinitrd,noinitrd mitigations=off,g' target/linux/x86/image/grub-efi.c
 sed -i 's,noinitrd,noinitrd mitigations=off,g' target/linux/x86/image/grub-iso.cfg
 sed -i 's,noinitrd,noinitrd mitigations=off,g' target/linux/x86/image/grub-pc.cfg
 # AutoCore
-svn export https://git.glan.space/github/immortalwrt.git/branches/openwrt-21.02/package/emortal/autocore package/lean/autocore
+rm -rf repo_tmp; git clone https://git.glan.space/github/immortalwrt.git -b openwrt-21.02 repo_tmp && mkdir -p package/lean/autocore && rsync -a repo_tmp/package/emortal/autocore/ package/lean/autocore; rm -rf repo_tmp
 sed -i 's/"getTempInfo" /"getTempInfo", "getCPUBench", "getCPUUsage" /g' package/lean/autocore/files/generic/luci-mod-status-autocore.json
 rm -rf ./feeds/packages/utils/coremark
 rm -rf repo_tmp; git clone https://git.glan.space/github/immortalwrt-packages.git repo_tmp && mkdir -p feeds/packages/utils/coremark && rsync -a repo_tmp/utils/coremark/ feeds/packages/utils/coremark; rm -rf repo_tmp
@@ -140,13 +140,13 @@ ln -sf ../../../feeds/packages/lang/node-serialport-bindings-cpp ./package/feeds
 git clone -b master --depth 1 https://git.glan.space/github/openwrt-r8168.git package/new/r8168
 patch -p1 <../PATCH/r8168/r8168-fix_LAN_led-for_r4s-from_TL.patch
 # R8152驱动
-svn export https://git.glan.space/github/immortalwrt.git/branches/master/package/kernel/r8152 package/new/r8152
+rm -rf repo_tmp; git clone https://git.glan.space/github/immortalwrt.git -b master repo_tmp && mkdir -p package/new/r8152 && rsync -a repo_tmp/package/kernel/r8152/ package/new/r8152; rm -rf repo_tmp
 sed -i 's,kmod-usb-net-rtl8152,kmod-usb-net-rtl8152-vendor,g' target/linux/rockchip/image/armv8.mk
 # UPX 可执行软件压缩
 sed -i '/patchelf pkgconf/i\tools-y += ucl upx' ./tools/Makefile
 sed -i '\/autoconf\/compile :=/i\$(curdir)/upx/compile := $(curdir)/ucl/compile' ./tools/Makefile
-svn export https://git.glan.space/github/coolsnowwolf-openwrt.git/branches/lede-17.01/tools/ucl tools/ucl
-svn export https://git.glan.space/github/coolsnowwolf-openwrt.git/branches/lede-17.01/tools/upx tools/upx
+rm -rf repo_tmp; git clone https://git.glan.space/github/coolsnowwolf-openwrt.git -b lede-17.01 repo_tmp && mkdir -p tools/ucl && rsync -a repo_tmp/tools/ucl/ tools/ucl; rm -rf repo_tmp
+rm -rf repo_tmp; git clone https://git.glan.space/github/coolsnowwolf-openwrt.git -b lede-17.01 repo_tmp && mkdir -p tools/upx && rsync -a repo_tmp/tools/upx/ tools/upx; rm -rf repo_tmp
 
 ### 获取额外的 LuCI 应用、主题和依赖 ###
 # 更换 golang 版本
@@ -179,7 +179,7 @@ ln -sf ../../../feeds/luci/applications/luci-app-arpbind ./package/feeds/luci/lu
 # 定时重启
 rm -rf repo_tmp; git clone https://git.glan.space/github/coolsnowwolf-luci.git repo_tmp && mkdir -p package/lean/luci-app-autoreboot && rsync -a repo_tmp/applications/luci-app-autoreboot/ package/lean/luci-app-autoreboot; rm -rf repo_tmp
 # Boost 通用即插即用
-svn export https://git.glan.space/github/luci-app-boostupnp.git package/new/luci-app-boostupnp
+rm -rf repo_tmp; git clone https://git.glan.space/github/luci-app-boostupnp.git repo_tmp && mkdir -p package/new/luci-app-boostupnp && rsync -a repo_tmp/ package/new/luci-app-boostupnp; rm -rf repo_tmp
 rm -rf ./feeds/packages/net/miniupnpd
 rm -rf repo_tmp; git clone https://git.glan.space/github/coolsnowwolf-packages.git repo_tmp && mkdir -p feeds/packages/net/miniupnpd && rsync -a repo_tmp/net/miniupnpd/ feeds/packages/net/miniupnpd; rm -rf repo_tmp
 # ChinaDNS
@@ -259,7 +259,7 @@ rm -rf repo_tmp; git clone https://git.glan.space/github/dragino2.git repo_tmp &
 rm -rf repo_tmp; git clone https://git.glan.space/github/dragino2-teasiu.git repo_tmp && mkdir -p package/new/luci-app-oray && rsync -a repo_tmp/package/teasiu/luci-app-oray/ package/new/luci-app-oray; rm -rf repo_tmp
 # Passwall
 #rm -rf repo_tmp; git clone https://git.glan.space/github/immortalwrt-luci.git repo_tmp && mkdir -p package/new/luci-app-passwall && rsync -a repo_tmp/applications/luci-app-passwall/ package/new/luci-app-passwall; rm -rf repo_tmp
-svn export https://git.glan.space/github/openwrt-passwall.git/branches/luci/luci-app-passwall package/new/luci-app-passwall
+rm -rf repo_tmp; git clone https://git.glan.space/github/openwrt-passwall.git -b luci repo_tmp && mkdir -p package/new/luci-app-passwall && rsync -a repo_tmp/luci-app-passwall/ package/new/luci-app-passwall; rm -rf repo_tmp
 pushd package/new/luci-app-passwall
 sed -i 's,default n,default y,g' Makefile
 sed -i '/trojan-go/d' Makefile
@@ -313,7 +313,7 @@ git clone -b master --depth 1 https://git.glan.space/github/luci-app-serverchan.
 rm -rf ./feeds/packages/net/smartdns
 rm -rf repo_tmp; git clone https://git.glan.space/github/Lienol-packages.git repo_tmp && mkdir -p feeds/packages/net/smartdns && rsync -a repo_tmp/net/smartdns/ feeds/packages/net/smartdns; rm -rf repo_tmp
 rm -rf ./feeds/luci/applications/luci-app-smartdns
-svn export https://git.glan.space/github/immortalwrt-luci.git/branches/openwrt-18.06/applications/luci-app-smartdns feeds/luci/applications/luci-app-smartdns
+rm -rf repo_tmp; git clone https://git.glan.space/github/immortalwrt-luci.git -b openwrt-18.06 repo_tmp && mkdir -p feeds/luci/applications/luci-app-smartdns && rsync -a repo_tmp/applications/luci-app-smartdns/ feeds/luci/applications/luci-app-smartdns; rm -rf repo_tmp
 # ShadowsocksR Plus+ 依赖
 rm -rf ./feeds/packages/net/kcptun
 rm -rf ./feeds/packages/net/shadowsocks-libev
