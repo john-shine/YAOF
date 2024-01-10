@@ -200,9 +200,9 @@ git clone -b luci --depth 1 https://git.glan.space/github/openwrt-chinadns-ng.gi
 # CPU 控制相关
 rm -rf repo_tmp; git clone https://git.glan.space/github/immortalwrt-luci.git repo_tmp && mkdir -p feeds/luci/applications/luci-app-cpufreq && rsync -a repo_tmp/applications/luci-app-cpufreq/ feeds/luci/applications/luci-app-cpufreq; rm -rf repo_tmp
 ln -sf ../../../feeds/luci/applications/luci-app-cpufreq ./package/feeds/luci/luci-app-cpufreq
-sed -i 's,1608,1800,g' feeds/luci/applications/luci-app-cpufreq/root/etc/uci-defaults/cpufreq
-sed -i 's,2016,2208,g' feeds/luci/applications/luci-app-cpufreq/root/etc/uci-defaults/cpufreq
-sed -i 's,1512,1608,g' feeds/luci/applications/luci-app-cpufreq/root/etc/uci-defaults/cpufreq
+sed -i 's,1608,1800,g' feeds/luci/applications/luci-app-cpufreq/root/etc/uci-defaults/10-cpufreq
+sed -i 's,2016,2208,g' feeds/luci/applications/luci-app-cpufreq/root/etc/uci-defaults/10-cpufreq
+sed -i 's,1512,1608,g' feeds/luci/applications/luci-app-cpufreq/root/etc/uci-defaults/10-cpufreq
 rm -rf repo_tmp; git clone https://git.glan.space/github/OpenWrt-Add.git repo_tmp && mkdir -p package/lean/luci-app-cpulimit && rsync -a repo_tmp/luci-app-cpulimit/ package/lean/luci-app-cpulimit; rm -rf repo_tmp
 rm -rf repo_tmp; git clone https://git.glan.space/github/immortalwrt-packages.git repo_tmp && mkdir -p feeds/packages/utils/cpulimit && rsync -a repo_tmp/utils/cpulimit/ feeds/packages/utils/cpulimit; rm -rf repo_tmp
 ln -sf ../../../feeds/packages/utils/cpulimit ./package/feeds/packages/cpulimit
