@@ -97,8 +97,11 @@ popd
 rm -rf ./target/linux/rockchip
 rm -rf repo_tmp; git clone https://git.glan.space/github/immortalwrt.git -b openwrt-21.02 repo_tmp && mkdir -p target/linux/rockchip && rsync -a repo_tmp/target/linux/rockchip/ target/linux/rockchip; rm -rf repo_tmp
 rm -rf ./package/boot/uboot-rockchip
-rm -rf repo_tmp; git clone https://git.glan.space/github/immortalwrt.git -b openwrt-21.02 repo_tmp && mkdir -p package/boot/uboot-rockchip && rsync -a repo_tmp/package/boot/uboot-rockchip/ package/boot/uboot-rockchip; rm -rf repo_tmp
-rm -rf repo_tmp; git clone https://git.glan.space/github/immortalwrt.git -b openwrt-21.02 repo_tmp && mkdir -p package/boot/arm-trusted-firmware-rockchip-vendor && rsync -a repo_tmp/package/boot/arm-trusted-firmware-rockchip-vendor/ package/boot/arm-trusted-firmware-rockchip-vendor; rm -rf repo_tmp
+rm -rf repo_tmp; git clone https://git.glan.space/github/immortalwrt.git -b openwrt-21.02 repo_tmp
+mkdir -p package/boot/uboot-rockchip && rsync -a repo_tmp/package/boot/uboot-rockchip/ package/boot/uboot-rockchip
+mkdir -p package/boot/arm-trusted-firmware-rockchip-vendor && rsync -a repo_tmp/package/boot/arm-trusted-firmware-rockchip-vendor/ package/boot/arm-trusted-firmware-rockchip-vendor
+rm -rf repo_tmp
+
 rm -rf ./package/kernel/linux/modules/video.mk
 wget -P package/kernel/linux/modules/ https://git.glan.space/github/immortalwrt.git/raw/branch/openwrt-21.02/package/kernel/linux/modules/video.mk
 # ImmortalWrt Uboot TMP Fix
@@ -115,8 +118,10 @@ rm -rf repo_tmp; git clone https://git.glan.space/github/immortalwrt.git -b open
 sed -i 's/"getTempInfo" /"getTempInfo", "getCPUBench", "getCPUUsage" /g' package/lean/autocore/files/generic/luci-mod-status-autocore.json
 rm -rf ./feeds/packages/utils/coremark
 rm -rf repo_tmp; git clone https://git.glan.space/github/immortalwrt-packages.git repo_tmp && mkdir -p feeds/packages/utils/coremark && rsync -a repo_tmp/utils/coremark/ feeds/packages/utils/coremark; rm -rf repo_tmp
+
 # DPDK
 rm -rf repo_tmp; git clone https://git.glan.space/github/OpenWrt-Add.git repo_tmp && mkdir -p package/new/dpdk && rsync -a repo_tmp/dpdk/ package/new/dpdk; rm -rf repo_tmp
+
 # 更换 Nodejs 版本
 rm -rf ./feeds/packages/lang/node
 rm -rf repo_tmp; git clone https://git.glan.space/github/openwrt-node-packages.git repo_tmp && mkdir -p feeds/packages/lang/node && rsync -a repo_tmp/node/ feeds/packages/lang/node; rm -rf repo_tmp
@@ -138,17 +143,22 @@ rm -rf repo_tmp; git clone https://git.glan.space/github/openwrt-node-packages.g
 ln -sf ../../../feeds/packages/lang/node-yarn ./package/feeds/packages/node-yarn
 rm -rf repo_tmp; git clone https://git.glan.space/github/openwrt-node-packages.git repo_tmp && mkdir -p feeds/packages/lang/node-serialport-bindings-cpp && rsync -a repo_tmp/node-serialport-bindings-cpp/ feeds/packages/lang/node-serialport-bindings-cpp; rm -rf repo_tmp
 ln -sf ../../../feeds/packages/lang/node-serialport-bindings-cpp ./package/feeds/packages/node-serialport-bindings-cpp
+
 # R8168驱动
 git clone -b master --depth 1 https://git.glan.space/github/openwrt-r8168.git package/new/r8168
 patch -p1 <../PATCH/r8168/r8168-fix_LAN_led-for_r4s-from_TL.patch
+
 # R8152驱动
 rm -rf repo_tmp; git clone https://git.glan.space/github/immortalwrt.git -b master repo_tmp && mkdir -p package/new/r8152 && rsync -a repo_tmp/package/kernel/r8152/ package/new/r8152; rm -rf repo_tmp
 sed -i 's,kmod-usb-net-rtl8152,kmod-usb-net-rtl8152-vendor,g' target/linux/rockchip/image/armv8.mk
+
 # UPX 可执行软件压缩
 sed -i '/patchelf pkgconf/i\tools-y += ucl upx' ./tools/Makefile
 sed -i '\/autoconf\/compile :=/i\$(curdir)/upx/compile := $(curdir)/ucl/compile' ./tools/Makefile
-rm -rf repo_tmp; git clone https://git.glan.space/github/coolsnowwolf-openwrt.git -b lede-17.01 repo_tmp && mkdir -p tools/ucl && rsync -a repo_tmp/tools/ucl/ tools/ucl; rm -rf repo_tmp
-rm -rf repo_tmp; git clone https://git.glan.space/github/coolsnowwolf-openwrt.git -b lede-17.01 repo_tmp && mkdir -p tools/upx && rsync -a repo_tmp/tools/upx/ tools/upx; rm -rf repo_tmp
+rm -rf repo_tmp; git clone https://git.glan.space/github/coolsnowwolf-openwrt.git -b lede-17.01 repo_tmp
+mkdir -p tools/ucl && rsync -a repo_tmp/tools/ucl/ tools/ucl
+mkdir -p tools/upx && rsync -a repo_tmp/tools/upx/ tools/upx
+rm -rf repo_tmp
 
 ### 获取额外的 LuCI 应用、主题和依赖 ###
 # 更换 golang 版本
@@ -198,8 +208,12 @@ rm -rf repo_tmp; git clone https://git.glan.space/github/immortalwrt-packages.gi
 ln -sf ../../../feeds/packages/utils/cpulimit ./package/feeds/packages/cpulimit
 # 动态DNS
 sed -i '/boot()/,+2d' feeds/packages/net/ddns-scripts/files/etc/init.d/ddns
-rm -rf repo_tmp; git clone https://git.glan.space/github/kiddin9-packages repo_tmp && mkdir -p package/lean/ddns-scripts_dnspod && rsync -a repo_tmp/ddns-scripts-aliyun/ package/lean/ddns-scripts_dnspod; rm -rf repo_tmp
-rm -rf repo_tmp; git clone https://git.glan.space/github/kiddin9-packages repo_tmp && mkdir -p package/lean/ddns-scripts_aliyun && rsync -a repo_tmp/ddns-scripts-dnspod/ package/lean/ddns-scripts_aliyun; rm -rf repo_tmp
+
+rm -rf repo_tmp; git clone https://git.glan.space/github/kiddin9-packages repo_tmp
+mkdir -p package/lean/ddns-scripts_dnspod && rsync -a repo_tmp/ddns-scripts-aliyun/ package/lean/ddns-scripts_dnspod
+mkdir -p package/lean/ddns-scripts_aliyun && rsync -a repo_tmp/ddns-scripts-dnspod/ package/lean/ddns-scripts_aliyun
+rm -rf repo_tmp
+
 rm -rf repo_tmp; git clone https://git.glan.space/github/OpenWrt_luci-app.git repo_tmp && mkdir -p package/lean/luci-app-tencentddns && rsync -a repo_tmp/luci-app-tencentddns/ package/lean/luci-app-tencentddns; rm -rf repo_tmp
 rm -rf repo_tmp; git clone https://git.glan.space/github/kenzok8-packages.git repo_tmp && mkdir -p feeds/luci/applications/luci-app-aliddns && rsync -a repo_tmp/luci-app-aliddns/ feeds/luci/applications/luci-app-aliddns; rm -rf repo_tmp
 ln -sf ../../../feeds/luci/applications/luci-app-aliddns ./package/feeds/luci/luci-app-aliddns
@@ -229,8 +243,11 @@ rm -rf ./feeds/luci/applications/luci-app-frps
 rm -rf ./feeds/luci/applications/luci-app-frpc
 rm -rf ./feeds/packages/net/frp
 rm -f ./package/feeds/packages/frp
-rm -rf repo_tmp; git clone https://git.glan.space/github/coolsnowwolf-luci.git repo_tmp && mkdir -p package/lean/luci-app-frps && rsync -a repo_tmp/applications/luci-app-frps/ package/lean/luci-app-frps; rm -rf repo_tmp
-rm -rf repo_tmp; git clone https://git.glan.space/github/coolsnowwolf-luci.git repo_tmp && mkdir -p package/lean/luci-app-frpc && rsync -a repo_tmp/applications/luci-app-frpc/ package/lean/luci-app-frpc; rm -rf repo_tmp
+rm -rf repo_tmp; git clone https://git.glan.space/github/coolsnowwolf-luci.git repo_tmp
+mkdir -p package/lean/luci-app-frps && rsync -a repo_tmp/applications/luci-app-frps/ package/lean/luci-app-frps
+mkdir -p package/lean/luci-app-frpc && rsync -a repo_tmp/applications/luci-app-frpc/ package/lean/luci-app-frpc
+rm -rf repo_tmp
+
 rm -rf repo_tmp; git clone https://git.glan.space/github/coolsnowwolf-packages.git repo_tmp && mkdir -p package/lean/frp && rsync -a repo_tmp/net/frp/ package/lean/frp; rm -rf repo_tmp
 # IPSec
 rm -rf repo_tmp; git clone https://git.glan.space/github/coolsnowwolf-luci.git repo_tmp && mkdir -p package/lean/luci-app-ipsec-server && rsync -a repo_tmp/applications/luci-app-ipsec-server/ package/lean/luci-app-ipsec-server; rm -rf repo_tmp
@@ -241,9 +258,13 @@ rm -rf repo_tmp; git clone https://git.glan.space/github/coolsnowwolf-lede.git r
 #ln -sf ../../../feeds/packages/net/mosdns ./package/feeds/packages/mosdns
 #sed -i '/config.yaml/d' feeds/packages/net/mosdns/Makefile
 #sed -i '/mosdns-init-openwrt/d' feeds/packages/net/mosdns/Makefile
-rm -rf repo_tmp; git clone https://git.glan.space/github/openwrt-mos.git repo_tmp && mkdir -p package/new/mosdns && rsync -a repo_tmp/mosdns/ package/new/mosdns; rm -rf repo_tmp
-rm -rf repo_tmp; git clone https://git.glan.space/github/openwrt-mos.git repo_tmp && mkdir -p package/new/luci-app-mosdns && rsync -a repo_tmp/luci-app-mosdns/ package/new/luci-app-mosdns; rm -rf repo_tmp
-rm -rf repo_tmp; git clone https://git.glan.space/github/openwrt-mos.git repo_tmp && mkdir -p package/new/v2ray-geodata && rsync -a repo_tmp/v2ray-geodata/ package/new/v2ray-geodata; rm -rf repo_tmp
+
+rm -rf repo_tmp; git clone https://git.glan.space/github/openwrt-mos.git repo_tmp
+mkdir -p package/new/mosdns && rsync -a repo_tmp/mosdns/ package/new/mosdns
+mkdir -p package/new/luci-app-mosdns && rsync -a repo_tmp/luci-app-mosdns/ package/new/luci-app-mosdns
+mkdir -p package/new/v2ray-geodata && rsync -a repo_tmp/v2ray-geodata/ package/new/v2ray-geodata
+rm -rf repo_tmp
+
 # 流量监管
 rm -rf repo_tmp; git clone https://git.glan.space/github/coolsnowwolf-luci.git repo_tmp && mkdir -p package/lean/luci-app-netdata && rsync -a repo_tmp/applications/luci-app-netdata/ package/lean/luci-app-netdata; rm -rf repo_tmp
 # 上网 APP 过滤
@@ -278,13 +299,26 @@ pushd package/new/luci-app-passwall
 bash move_2_services.sh
 popd
 rm -rf ./feeds/packages/net/https-dns-proxy
+
+rm -rf repo_tmp; git clone https://git.glan.space/github/openwrt-passwall.git repo_tmp
+mkdir -p package/new/tcping && rsync -a repo_tmp/tcping/ package/new/tcping
+mkdir -p package/new/trojan-go && rsync -a repo_tmp/trojan-go/ package/new/trojan-go
+mkdir -p package/new/brook && rsync -a repo_tmp/brook/ package/new/brook
+mkdir -p package/new/ssocks && rsync -a repo_tmp/ssocks/ package/new/ssocks
+mkdir -p package/new/hysteria && rsync -a repo_tmp/hysteria/ package/new/hysteria
+mkdir -p package/lean/shadowsocksr-libev && rsync -a repo_tmp/shadowsocksr-libev/ package/lean/shadowsocksr-libev
+mkdir -p package/lean/pdnsd && rsync -a repo_tmp/pdnsd-alt/ package/lean/pdnsd
+mkdir -p package/lean/microsocks && rsync -a repo_tmp/microsocks/ package/lean/microsocks
+mkdir -p package/lean/dns2socks && rsync -a repo_tmp/dns2socks/ package/lean/dns2socks
+mkdir -p package/lean/ipt2socks && rsync -a repo_tmp/ipt2socks/ package/lean/ipt2socks
+mkdir -p package/lean/trojan && rsync -a repo_tmp/trojan/ package/lean/trojan
+mkdir -p package/lean/tcping && rsync -a repo_tmp/tcping/ package/lean/tcping
+mkdir -p package/lean/trojan-go && rsync -a repo_tmp/trojan-go/ package/lean/trojan-go
+mkdir -p feeds/packages/net/shadowsocks-rust && rsync -a repo_tmp/shadowsocks-rust/ feeds/packages/net/shadowsocks-rust
+rm -rf repo_tmp
+
 rm -rf repo_tmp; git clone https://git.glan.space/github/Lienol-packages.git repo_tmp && mkdir -p feeds/packages/net/https-dns-proxy && rsync -a repo_tmp/net/https-dns-proxy/ feeds/packages/net/https-dns-proxy; rm -rf repo_tmp
-rm -rf repo_tmp; git clone https://git.glan.space/github/openwrt-passwall.git repo_tmp && mkdir -p package/new/tcping && rsync -a repo_tmp/tcping/ package/new/tcping; rm -rf repo_tmp
-rm -rf repo_tmp; git clone https://git.glan.space/github/openwrt-passwall.git repo_tmp && mkdir -p package/new/trojan-go && rsync -a repo_tmp/trojan-go/ package/new/trojan-go; rm -rf repo_tmp
-rm -rf repo_tmp; git clone https://git.glan.space/github/openwrt-passwall.git repo_tmp && mkdir -p package/new/brook && rsync -a repo_tmp/brook/ package/new/brook; rm -rf repo_tmp
 rm -rf repo_tmp; git clone https://git.glan.space/github/OpenWrt-Add.git repo_tmp && mkdir -p package/new/trojan-plus && rsync -a repo_tmp/trojan-plus/ package/new/trojan-plus; rm -rf repo_tmp
-rm -rf repo_tmp; git clone https://git.glan.space/github/openwrt-passwall.git repo_tmp && mkdir -p package/new/ssocks && rsync -a repo_tmp/ssocks/ package/new/ssocks; rm -rf repo_tmp
-rm -rf repo_tmp; git clone https://git.glan.space/github/openwrt-passwall.git repo_tmp && mkdir -p package/new/hysteria && rsync -a repo_tmp/hysteria/ package/new/hysteria; rm -rf repo_tmp
 # passwall2
 rm -rf repo_tmp; git clone https://git.glan.space/github/openwrt-passwall2.git repo_tmp && mkdir -p package/new/luci-app-passwall2 && rsync -a repo_tmp/luci-app-passwall2/ package/new/luci-app-passwall2; rm -rf repo_tmp
 wget -P package/new/luci-app-passwall2/ https://git.glan.space/github/OpenWrt-Add.git/raw/branch/master/move_2_services.sh
@@ -302,11 +336,13 @@ sed -i '/shadowsocks-libev-ss-local/d' Makefile
 popd
 # qBittorrent 下载
 rm -rf repo_tmp; git clone https://git.glan.space/github/coolsnowwolf-luci.git repo_tmp && mkdir -p package/lean/luci-app-qbittorrent && rsync -a repo_tmp/applications/luci-app-qbittorrent/ package/lean/luci-app-qbittorrent; rm -rf repo_tmp
-rm -rf repo_tmp; git clone https://git.glan.space/github/coolsnowwolf-packages.git repo_tmp && mkdir -p package/lean/qBittorrent-static && rsync -a repo_tmp/net/qBittorrent-static/ package/lean/qBittorrent-static; rm -rf repo_tmp
-rm -rf repo_tmp; git clone https://git.glan.space/github/coolsnowwolf-packages.git repo_tmp && mkdir -p package/lean/qBittorrent && rsync -a repo_tmp/net/qBittorrent/ package/lean/qBittorrent; rm -rf repo_tmp
-rm -rf repo_tmp; git clone https://git.glan.space/github/coolsnowwolf-packages.git repo_tmp && mkdir -p package/lean/qtbase && rsync -a repo_tmp/libs/qtbase/ package/lean/qtbase; rm -rf repo_tmp
-rm -rf repo_tmp; git clone https://git.glan.space/github/coolsnowwolf-packages.git repo_tmp && mkdir -p package/lean/qttools && rsync -a repo_tmp/libs/qttools/ package/lean/qttools; rm -rf repo_tmp
-rm -rf repo_tmp; git clone https://git.glan.space/github/coolsnowwolf-packages.git repo_tmp && mkdir -p package/lean/rblibtorrent && rsync -a repo_tmp/libs/rblibtorrent/ package/lean/rblibtorrent; rm -rf repo_tmp
+rm -rf repo_tmp; git clone https://git.glan.space/github/coolsnowwolf-packages.git repo_tmp
+mkdir -p package/lean/qBittorrent-static && rsync -a repo_tmp/net/qBittorrent-static/ package/lean/qBittorrent-static
+mkdir -p package/lean/qBittorrent && rsync -a repo_tmp/net/qBittorrent/ package/lean/qBittorrent
+mkdir -p package/lean/qtbase && rsync -a repo_tmp/libs/qtbase/ package/lean/qtbase
+mkdir -p package/lean/qttools && rsync -a repo_tmp/libs/qttools/ package/lean/qttools
+mkdir -p package/lean/rblibtorrent && rsync -a repo_tmp/libs/rblibtorrent/ package/lean/rblibtorrent
+rm -rf repo_tmp
 # 清理内存
 rm -rf repo_tmp; git clone https://git.glan.space/github/coolsnowwolf-luci.git repo_tmp && mkdir -p package/lean/luci-app-ramfree && rsync -a repo_tmp/applications/luci-app-ramfree/ package/lean/luci-app-ramfree; rm -rf repo_tmp
 # ServerChan 微信推送
@@ -320,24 +356,23 @@ rm -rf repo_tmp; git clone https://git.glan.space/github/immortalwrt-luci.git -b
 rm -rf ./feeds/packages/net/kcptun
 rm -rf ./feeds/packages/net/shadowsocks-libev
 rm -rf ./feeds/packages/net/xray-core
-rm -rf repo_tmp; git clone https://git.glan.space/github/coolsnowwolf-packages.git repo_tmp && mkdir -p package/lean/shadowsocks-libev && rsync -a repo_tmp/net/shadowsocks-libev/ package/lean/shadowsocks-libev; rm -rf repo_tmp
-rm -rf repo_tmp; git clone https://git.glan.space/github/openwrt-passwall.git repo_tmp && mkdir -p package/lean/shadowsocksr-libev && rsync -a repo_tmp/shadowsocksr-libev/ package/lean/shadowsocksr-libev; rm -rf repo_tmp
-rm -rf repo_tmp; git clone https://git.glan.space/github/openwrt-passwall.git repo_tmp && mkdir -p package/lean/pdnsd && rsync -a repo_tmp/pdnsd-alt/ package/lean/pdnsd; rm -rf repo_tmp
+
+rm -rf repo_tmp; git clone https://git.glan.space/github/openwrt-passwall-packages.git repo_tmp
 rm -rf repo_tmp; git clone https://git.glan.space/github/coolsnowwolf-lede.git repo_tmp && mkdir -p package/lean/srelay && rsync -a repo_tmp/package/lean/srelay/ package/lean/srelay; rm -rf repo_tmp
-rm -rf repo_tmp; git clone https://git.glan.space/github/openwrt-passwall.git repo_tmp && mkdir -p package/lean/microsocks && rsync -a repo_tmp/microsocks/ package/lean/microsocks; rm -rf repo_tmp
-rm -rf repo_tmp; git clone https://git.glan.space/github/openwrt-passwall.git repo_tmp && mkdir -p package/lean/dns2socks && rsync -a repo_tmp/dns2socks/ package/lean/dns2socks; rm -rf repo_tmp
-rm -rf repo_tmp; git clone https://git.glan.space/github/coolsnowwolf-packages.git repo_tmp && mkdir -p package/lean/redsocks2 && rsync -a repo_tmp/net/redsocks2/ package/lean/redsocks2; rm -rf repo_tmp
-rm -rf repo_tmp; git clone https://git.glan.space/github/openwrt-passwall.git repo_tmp && mkdir -p package/lean/ipt2socks && rsync -a repo_tmp/ipt2socks/ package/lean/ipt2socks; rm -rf repo_tmp
-rm -rf repo_tmp; git clone https://git.glan.space/github/openwrt-passwall.git repo_tmp && mkdir -p package/lean/trojan && rsync -a repo_tmp/trojan/ package/lean/trojan; rm -rf repo_tmp
-rm -rf repo_tmp; git clone https://git.glan.space/github/openwrt-passwall.git repo_tmp && mkdir -p package/lean/tcping && rsync -a repo_tmp/tcping/ package/lean/tcping; rm -rf repo_tmp
-rm -rf repo_tmp; git clone https://git.glan.space/github/openwrt-passwall.git repo_tmp && mkdir -p package/lean/trojan-go && rsync -a repo_tmp/trojan-go/ package/lean/trojan-go; rm -rf repo_tmp
-rm -rf repo_tmp; git clone https://git.glan.space/github/helloworld.git repo_tmp && mkdir -p package/lean/simple-obfs && rsync -a repo_tmp/simple-obfs/ package/lean/simple-obfs; rm -rf repo_tmp
-rm -rf repo_tmp; git clone https://git.glan.space/github/helloworld.git repo_tmp && mkdir -p package/lean/naiveproxy && rsync -a repo_tmp/naiveproxy/ package/lean/naiveproxy; rm -rf repo_tmp
-rm -rf repo_tmp; git clone https://git.glan.space/github/helloworld.git repo_tmp && mkdir -p package/lean/v2ray-core && rsync -a repo_tmp/v2ray-core/ package/lean/v2ray-core; rm -rf repo_tmp
-rm -rf repo_tmp; git clone https://git.glan.space/github/helloworld.git repo_tmp && mkdir -p package/lean/xray-core && rsync -a repo_tmp/xray-core/ package/lean/xray-core; rm -rf repo_tmp
-rm -rf repo_tmp; git clone https://git.glan.space/github/helloworld.git repo_tmp && mkdir -p package/lean/v2ray-plugin && rsync -a repo_tmp/v2ray-plugin/ package/lean/v2ray-plugin; rm -rf repo_tmp
-rm -rf repo_tmp; git clone https://git.glan.space/github/helloworld.git repo_tmp && mkdir -p package/lean/xray-plugin && rsync -a repo_tmp/xray-plugin/ package/lean/xray-plugin; rm -rf repo_tmp
-rm -rf repo_tmp; git clone https://git.glan.space/github/openwrt-passwall.git repo_tmp && mkdir -p feeds/packages/net/shadowsocks-rust && rsync -a repo_tmp/shadowsocks-rust/ feeds/packages/net/shadowsocks-rust; rm -rf repo_tmp
+rm -rf repo_tmp; git clone https://git.glan.space/github/coolsnowwolf-packages.git repo_tmp
+mkdir -p package/lean/shadowsocks-libev && rsync -a repo_tmp/net/shadowsocks-libev/ package/lean/shadowsocks-libev
+mkdir -p package/lean/redsocks2 && rsync -a repo_tmp/net/redsocks2/ package/lean/redsocks2
+rm -rf repo_tmp
+
+rm -rf repo_tmp; git clone https://git.glan.space/github/helloworld.git repo_tmp
+mkdir -p package/lean/simple-obfs && rsync -a repo_tmp/simple-obfs/ package/lean/simple-obfs
+mkdir -p package/lean/naiveproxy && rsync -a repo_tmp/naiveproxy/ package/lean/naiveproxy
+mkdir -p package/lean/v2ray-core && rsync -a repo_tmp/v2ray-core/ package/lean/v2ray-core
+mkdir -p package/lean/xray-core && rsync -a repo_tmp/xray-core/ package/lean/xray-core
+mkdir -p package/lean/v2ray-plugin && rsync -a repo_tmp/v2ray-plugin/ package/lean/v2ray-plugin
+mkdir -p package/lean/xray-plugin && rsync -a repo_tmp/xray-plugin/ package/lean/xray-plugin
+rm -rf repo_tmp
+
 #rm -rf repo_tmp; git clone https://git.glan.space/github/immortalwrt-packages.git repo_tmp && mkdir -p feeds/packages/net/shadowsocks-rust && rsync -a repo_tmp/net/shadowsocks-rust/ feeds/packages/net/shadowsocks-rust; rm -rf repo_tmp
 sed -i '/Build\/Compile/a\\t$(STAGING_DIR_HOST)/bin/upx --lzma --best $$(PKG_BUILD_DIR)/$(component)' feeds/packages/net/shadowsocks-rust/Makefile
 ln -sf ../../../feeds/packages/net/shadowsocks-rust ./package/feeds/packages/shadowsocks-rust
