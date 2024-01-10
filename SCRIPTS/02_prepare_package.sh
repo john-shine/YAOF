@@ -87,8 +87,8 @@ wget -qO- https://git.glan.space/github/R2S-R4S-OpenWrt.git/raw/branch/21.02/PAT
 # Patch LuCI 以增添 FullCone 开关
 patch -p1 <../PATCH/firewall/luci-app-firewall_add_fullcone.patch
 # FullCone 相关组件
-rm -rf repo_tmp; git clone https://git.glan.space/github/coolsnowwolf-lede.git repo_tmp && mkdir -p package/lean/openwrt-fullconenat && rsync -a repo_tmp/package/lean/openwrt-fullconenat/ package/lean/openwrt-fullconenat; rm -rf repo_tmp
-pushd package/lean/openwrt-fullconenat
+rm -rf repo_tmp; git clone https://git.glan.space/github/coolsnowwolf-lede.git repo_tmp && mkdir -p package/network/services/fullconenat && rsync -a repo_tmp/package/network/services/fullconenat/ package/network/services/fullconenat; rm -rf repo_tmp
+pushd package/network/services/fullconenat
 patch -p2 <../../../../PATCH/firewall/fullcone6.patch
 popd
 
