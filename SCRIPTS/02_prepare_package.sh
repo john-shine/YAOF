@@ -300,7 +300,7 @@ bash move_2_services.sh
 popd
 rm -rf ./feeds/packages/net/https-dns-proxy
 
-rm -rf repo_tmp; git clone https://git.glan.space/github/openwrt-passwall.git repo_tmp
+rm -rf repo_tmp; git clone https://git.glan.space/github/openwrt-passwall-packages.git repo_tmp
 mkdir -p package/new/tcping && rsync -a repo_tmp/tcping/ package/new/tcping
 mkdir -p package/new/trojan-go && rsync -a repo_tmp/trojan-go/ package/new/trojan-go
 mkdir -p package/new/brook && rsync -a repo_tmp/brook/ package/new/brook
@@ -357,7 +357,6 @@ rm -rf ./feeds/packages/net/kcptun
 rm -rf ./feeds/packages/net/shadowsocks-libev
 rm -rf ./feeds/packages/net/xray-core
 
-rm -rf repo_tmp; git clone https://git.glan.space/github/openwrt-passwall-packages.git repo_tmp
 rm -rf repo_tmp; git clone https://git.glan.space/github/coolsnowwolf-lede.git repo_tmp && mkdir -p package/lean/srelay && rsync -a repo_tmp/package/lean/srelay/ package/lean/srelay; rm -rf repo_tmp
 rm -rf repo_tmp; git clone https://git.glan.space/github/coolsnowwolf-packages.git repo_tmp
 mkdir -p package/lean/shadowsocks-libev && rsync -a repo_tmp/net/shadowsocks-libev/ package/lean/shadowsocks-libev
