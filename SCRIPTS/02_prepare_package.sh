@@ -27,6 +27,7 @@ wget -qO - https://git.glan.space/github/openwrt-openwrt.git/pull/4849.patch | p
 # TCP performance optimizations backport from linux/net-next
 echo `pwd`
 cp -f ../PATCH/backport/695-tcp-optimizations.patch ./target/linux/generic/backport-5.4/695-tcp-optimizations.patch
+exit 1
 # introduce "le9" Linux kernel patches
 cp -f ../PATCH/backport/695-le9i.patch ./target/linux/generic/hack-5.4/695-le9i.patch
 # Patch arm64 型号名称
