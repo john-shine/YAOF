@@ -25,10 +25,10 @@ echo "net.netfilter.nf_conntrack_helper = 1" >>./package/kernel/linux/files/sysc
 # offload bug fix
 wget -qO - https://git.glan.space/github/openwrt-openwrt.git/pull/4849.patch | patch -p1
 # TCP performance optimizations backport from linux/net-next
-echo `pwd`
+mkdir -p ./target/linux/generic/backport-5.4/
 cp -f ../PATCH/backport/695-tcp-optimizations.patch ./target/linux/generic/backport-5.4/695-tcp-optimizations.patch
-exit 1
 # introduce "le9" Linux kernel patches
+mkdir -p ./target/linux/generic/hack-5.4/
 cp -f ../PATCH/backport/695-le9i.patch ./target/linux/generic/hack-5.4/695-le9i.patch
 # Patch arm64 型号名称
 wget -P target/linux/generic/hack-5.4/ https://git.glan.space/github/immortalwrt.git/raw/branch/openwrt-21.02/target/linux/generic/hack-5.4/312-arm64-cpuinfo-Add-model-name-in-proc-cpuinfo-for-64bit-ta.patch
