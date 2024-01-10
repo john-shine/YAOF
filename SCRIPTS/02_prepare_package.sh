@@ -186,7 +186,7 @@ rm -rf ./feeds/packages/net/miniupnpd
 rm -rf repo_tmp; git clone https://git.glan.space/github/coolsnowwolf-packages.git repo_tmp && mkdir -p feeds/packages/net/miniupnpd && rsync -a repo_tmp/net/miniupnpd/ feeds/packages/net/miniupnpd; rm -rf repo_tmp
 # ChinaDNS
 git clone -b luci --depth 1 https://git.glan.space/github/openwrt-chinadns-ng.git package/new/luci-app-chinadns-ng
-rm -rf repo_tmp; git clone https://git.glan.space/github/openwrt-passwall.git repo_tmp && mkdir -p package/new/chinadns-ng && rsync -a repo_tmp/chinadns-ng/ package/new/chinadns-ng; rm -rf repo_tmp
+git clone -b luci --depth 1 https://git.glan.space/github/openwrt-chinadns-ng.git package/new/chinadns-ng
 # CPU 控制相关
 rm -rf repo_tmp; git clone https://git.glan.space/github/immortalwrt-luci.git repo_tmp && mkdir -p feeds/luci/applications/luci-app-cpufreq && rsync -a repo_tmp/applications/luci-app-cpufreq/ feeds/luci/applications/luci-app-cpufreq; rm -rf repo_tmp
 ln -sf ../../../feeds/luci/applications/luci-app-cpufreq ./package/feeds/luci/luci-app-cpufreq
