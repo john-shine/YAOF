@@ -33,14 +33,20 @@ sed -i "s,'eth1' 'eth0','eth0' 'eth1',g" target/linux/rockchip/armv8/base-files/
 #Vermagic
 latest_version="$(curl -s https://github.com/openwrt/openwrt/tags | grep -Eo "v[0-9\.]+\-*r*c*[0-9]*.tar.gz" | sed -n '/[2-9][0-9]/p' | sed -n 1p | sed 's/v//g' | sed 's/.tar.gz//g')"
 wget "https://downloads.openwrt.org/releases/${latest_version}/targets/rockchip/armv8/packages/Packages.gz" -O Packages.gz
+
+echo 1111111111111111111111111111111111111111111
 zgrep -m 1 "Depends: kernel (=.*)$" Packages.gz | sed -e 's/.*-\(.*\))/\1/' >.vermagic
+echo 2222222222222222222222222222222222222222222
 sed -i -e 's/^\(.\).*vermagic$/\1cp $(TOPDIR)\/.vermagic $(LINUX_DIR)\/.vermagic/' include/kernel-defaults.mk
+echo 3333333333333333333333333333333333333333333
 
 # 预配置一些插件
 cp -rf ../PATCH/files ./files
 
+echo 4444444444444444444444444444444444444444444
 chmod -R 755 ./
 find ./ -name *.orig | xargs rm -f
 find ./ -name *.rej | xargs rm -f
+echo 5555555555555555555555555555555555555555555
 
 #exit 0
