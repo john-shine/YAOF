@@ -155,7 +155,7 @@ sed -i 's,kmod-usb-net-rtl8152,kmod-usb-net-rtl8152-vendor,g' target/linux/rockc
 # UPX 可执行软件压缩
 sed -i '/patchelf pkgconf/i\tools-y += ucl upx' ./tools/Makefile
 sed -i '\/autoconf\/compile :=/i\$(curdir)/upx/compile := $(curdir)/ucl/compile' ./tools/Makefile
-rm -rf repo_tmp; git clone https://git.glan.space/github/coolsnowwolf-openwrt.git -b lede-17.01 repo_tmp
+rm -rf repo_tmp; git clone https://git.glan.space/github/coolsnowwolf-openwrt.git -b v17.01.2 repo_tmp
 mkdir -p tools/ucl && rsync -a repo_tmp/tools/ucl/ tools/ucl
 mkdir -p tools/upx && rsync -a repo_tmp/tools/upx/ tools/upx
 rm -rf repo_tmp
