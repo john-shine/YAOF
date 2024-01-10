@@ -23,7 +23,7 @@ echo "net.netfilter.nf_conntrack_helper = 1" >>./package/kernel/linux/files/sysc
 
 ### 必要的 Patches ###
 # offload bug fix
-wget -qO - https://git.glan.space/github/openwrt-openwrt.git/pull/4849.patch | patch -p1
+cat ../PATCH/github/4849.patch | patch -p1
 # TCP performance optimizations backport from linux/net-next
 mkdir -p ./target/linux/generic/backport-5.4/
 cp -f ../PATCH/backport/695-tcp-optimizations.patch ./target/linux/generic/backport-5.4/695-tcp-optimizations.patch
@@ -41,7 +41,7 @@ cp -f ../PATCH/dnsmasq/900-add-filter-aaaa-option.patch ./package/network/servic
 # BBRv2
 patch -p1 <../PATCH/BBRv2/openwrt-kmod-bbr2.patch
 cp -f ../PATCH/BBRv2/693-Add_BBRv2_congestion_control_for_Linux_TCP.patch ./target/linux/generic/hack-5.4/693-Add_BBRv2_congestion_control_for_Linux_TCP.patch
-wget -qO - https://git.glan.space/github/openwrt-openwrt.git/commit/cfaf039.patch | patch -p1
+cat ../PATCH/github/cfaf039.patch | patch -p1
 # CacULE
 #wget -qO - https://git.glan.space/github/openwrt-NoTengoBattery.git/commit/7d44cab.patch | patch -p1
 #wget https://git.glan.space/github/cacule-cpu-scheduler.git/raw/branch/master/patches/CacULE/v5.4/cacule-5.4.patch -O ./target/linux/generic/hack-5.4/694-cacule-5.4.patch
@@ -71,9 +71,9 @@ pushd feeds/packages
 wget -qO - https://git.glan.space/github/QiuSimons-packages.git/commit/7ffbfbe.patch | patch -p1
 popd
 # OPENSSL
-wget -P package/libs/openssl/patches/ https://git.glan.space/github/openssl.git/pull/11895.patch
-wget -P package/libs/openssl/patches/ https://git.glan.space/github/openssl.git/pull/14578.patch
-wget -P package/libs/openssl/patches/ https://git.glan.space/github/openssl.git/pull/16575.patch
+cp ../PATCH/github/11895.patch package/libs/openssl/patches/
+cp ../PATCH/github/14578.patch package/libs/openssl/patches/
+cp ../PATCH/github/16575.patch package/libs/openssl/patches/
 
 ### Fullcone-NAT 部分 ###
 # Patch Kernel 以解决 FullCone 冲突
@@ -346,11 +346,6 @@ ln -sf ../../../feeds/packages/net/kcptun ./package/feeds/packages/kcptun
 # ShadowsocksR Plus+
 rm -rf repo_tmp; git clone https://git.glan.space/github/helloworld.git repo_tmp && mkdir -p package/lean/luci-app-ssr-plus && rsync -a repo_tmp/luci-app-ssr-plus/ package/lean/luci-app-ssr-plus; rm -rf repo_tmp
 rm -rf ./package/lean/luci-app-ssr-plus/po/zh_Hans
-pushd package/lean
-#wget -qO - https://git.glan.space/github/helloworld.git/pull/656.patch | patch -p1
-wget -qO - https://git.glan.space/github/helloworld.git/commit/5bbf6e7.patch | patch -p1
-wget -qO - https://git.glan.space/github/helloworld.git/commit/ea3b4bd.patch | patch -p1
-popd
 pushd package/lean/luci-app-ssr-plus
 sed -i 's,default n,default y,g' Makefile
 sed -i '/trojan-go/d' Makefile
